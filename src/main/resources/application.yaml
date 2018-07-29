@@ -1,0 +1,38 @@
+data:
+    path: test.xlsx
+mail:
+    content: 五险一金缴费基数上调通知
+    from: ${spring.mail.username}
+    subject: 五险一金缴费基数上调通知
+out:
+    data:
+        path: D:/excel/
+spring:
+    mail:
+        host: smtp.aliyun.com
+        username: yinlongfei@aliyun.com
+        password: a920822D
+        port: 465
+        properties:
+            mail:
+                smtp:
+                    ssl:
+                        enable: true
+            smtp:
+                auth: true
+                starttls:
+                    enable: true
+                    required: true
+    thymeleaf:
+        cache: false
+        encoding: UTF-8
+        mode: HTML5
+        prefix: classpath:/views/
+        servlet:
+            content-type: text/html
+        suffix: .html
+template:
+    url: template.xlsx
+user:
+    data:
+        path: user.xlsx
