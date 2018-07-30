@@ -1,12 +1,13 @@
 data:
-    path: test.xlsx
+    path: D:\upload
+    filename: test.xlsx
 mail:
     content: 五险一金缴费基数上调通知
     from: ${spring.mail.username}
     subject: 五险一金缴费基数上调通知
 out:
     data:
-        path: D:/excel/
+        path: D:\excel\
 spring:
     mail:
         host: smtp.aliyun.com
@@ -27,12 +28,30 @@ spring:
         cache: false
         encoding: UTF-8
         mode: HTML5
-        prefix: classpath:/views/
+        prefix: classpath:/static/
         servlet:
             content-type: text/html
         suffix: .html
 template:
-    url: template.xlsx
+    filename: template.xlsx
+    path: ${data.path}
 user:
     data:
-        path: user.xlsx
+        path: ${data.path}
+        filename: user.xlsx
+
+
+
+---
+spring:
+  datasource:
+    password:
+    url: jdbc:h2:~/test;AUTO_SERVER=TRUE;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+
+
+
+
+
+
+

@@ -37,7 +37,7 @@ public class MailUtil {
             ImportParams params = new ImportParams();
             //params.setNeedSave(true);
             List<MailBean> result = ExcelImportUtil.importExcel(
-                    (new ClassPathResource(userDataPath)).getFile(),
+                    (new File(userDataPath)),
                     MailBean.class, params);
             for (int i = 0; i < result.size(); i++) {
                 System.out.println(ReflectionToStringBuilder.toString(result.get(i)));
@@ -116,9 +116,8 @@ public class MailUtil {
             params.setHeadRows(3);
             //params.setTitleRows(3);
             //params.setNeedSave(true);
-            String path = dataPath;
             List<ShebaoBean> shebaoBeans = ExcelImportUtil.importExcel(
-                    (new ClassPathResource(path)).getFile(),
+                    new File(dataPath),
                     ShebaoBean.class, params);
 
             ArrayList<ShebaoBean> unique  = shebaoBeans.stream().collect(
@@ -141,7 +140,7 @@ public class MailUtil {
             importParams.setSheetNum(1);
             //importParams.setNeedSave(true);
             List<GongjijinBean> gongjijinBeans = ExcelImportUtil.importExcel(
-                    (new ClassPathResource(path)).getFile(),
+                    new File(dataPath),
                     GongjijinBean.class, importParams);
 
             TemplateExportParams templateExportParams = new TemplateExportParams(
@@ -175,7 +174,12 @@ public class MailUtil {
                 if (!savefile.exists()) {
                     savefile.mkdirs();
                 }
-                FileOutputStream fos = new FileOutputStream(outDataPath+name+".xlsx");
+                String name1 = outDataPath + name + ".xlsx";
+                File file = new File(name1);
+                if (file.exists()){
+                    file.renameTo(new File(file.getAbsolutePath()+file.getName()+file.lastModified()));
+                }
+                FileOutputStream fos = new FileOutputStream(name1);
                 workbook.write(fos);
                 fos.close();
 
