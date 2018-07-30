@@ -132,7 +132,7 @@ public class WuxianyijinResource {
                 f.renameTo(new File(dataPath+File.separator+f.getName()+f.lastModified()));
             }
         }else {
-            dataDir.mkdir();
+            dataDir.mkdirs();
         }
     }
 

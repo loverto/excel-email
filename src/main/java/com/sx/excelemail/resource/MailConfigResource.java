@@ -11,6 +11,8 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.PostConstruct;
+
 @Slf4j
 @RestController
 @RequestMapping("/email")
@@ -23,20 +25,34 @@ public class MailConfigResource {
     @Autowired
     MailConfigRepository mailConfigRepository;
 
+
+    @PostConstruct
+    public void init(){
+        MailConfig mailConfig = mailConfigRepository.findAll().get(0);
+        setMailConfig(mailConfig);
+
+    }
+
+    public void setMailConfig(MailConfig mailConfig){
+        //邮箱设置
+        if (StringUtils.isNotBlank(mailConfig.getPassword())
+                &&StringUtils.isNotBlank(mailConfig.getSmtpServer())
+                &&StringUtils.isNotBlank(mailConfig.getUsername())
+                ){
+            JavaMailSenderImpl javaMailSender = (JavaMailSenderImpl) mailSender;
+            javaMailSender.setHost(mailConfig.getSmtpServer());
+            javaMailSender.setPassword(mailConfig.getPassword());
+            javaMailSender.setPort(mailConfig.getSmtpPort());
+            javaMailSender.setUsername(mailConfig.getUsername());
+        }
+    }
+
+
     @PostMapping("/config")
     public ResponseEntity<MailConfig> addMailConfig(@Validated MailConfig mailConfig){
             mailConfigRepository.save(mailConfig);
             //邮箱设置
-            if (StringUtils.isNotBlank(mailConfig.getPassword())
-                    &&StringUtils.isNotBlank(mailConfig.getSmtpServer())
-                    &&StringUtils.isNotBlank(mailConfig.getUsername())
-                    ){
-                JavaMailSenderImpl javaMailSender = (JavaMailSenderImpl) mailSender;
-                javaMailSender.setHost(mailConfig.getSmtpServer());
-                javaMailSender.setPassword(mailConfig.getPassword());
-                javaMailSender.setPort(mailConfig.getSmtpPort());
-                javaMailSender.setUsername(mailConfig.getUsername());
-            }
+            setMailConfig(mailConfig);
            return ResponseEntity.ok(mailConfig);
     }
 
