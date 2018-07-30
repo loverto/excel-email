@@ -1,5 +1,5 @@
 data:
-    path: D:\upload
+    path: ~/upload
     filename: test.xlsx
 mail:
     content: 五险一金缴费基数上调通知
@@ -7,7 +7,7 @@ mail:
     subject: 五险一金缴费基数上调通知
 out:
     data:
-        path: D:\excel\
+        path: ~/excel/
 spring:
     mail:
         host: smtp.aliyun.com

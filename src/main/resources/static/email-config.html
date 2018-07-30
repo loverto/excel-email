@@ -290,7 +290,7 @@
                         </div>
 
                         <div>
-                            <form class="form-horizontal" role="form" id="wuxianyijin" enctype="multipart/form-data">
+                            <form class="form-horizontal" role="form" id="email" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1">
                                         发送邮箱用户名 </label>
@@ -591,20 +591,58 @@
 
         });
 
+        function loadData(jsonStr){
+            var obj = jsonStr;
+            var key,value,tagName,type,arr;
+            for(x in obj){
+                key = x;
+                value = obj[x];
+                $("[name='"+key+"'],[name='"+key+"[]']").each(function(){
+                    tagName = $(this)[0].tagName;
+                    type = $(this).attr('type');
+                    if(tagName=='INPUT'){
+                        if(type=='radio'){
+                            $(this).attr('checked',$(this).val()==value);
+                        }else if(type=='checkbox'){
+                            arr = value.split(',');
+                            for(var i =0;i<arr.length;i++){
+                                if($(this).val()==arr[i]){
+                                    $(this).attr('checked',true);
+                                    break;
+                                }
+                            }
+                        }else{
+                            $(this).val(value);
+                        }
+                    }else if(tagName=='SELECT' || tagName=='TEXTAREA'){
+                        $(this).val(value);
+                    }
+
+                });
+            }
+        }
+
+
+        $.get('/email/config',function (data) {
+            console.log(JSON.stringify(data))
+            loadData(data)
+            alert("邮箱信息从后台加载完毕，请确认");
+        })
+
 
         $('#sm').click(function () {
-            let $wuxianyijin = $('#wuxianyijin');
+            let $email = $('#email');
 
-            let serialise = $wuxianyijin.serialize();
+            let serialise = $email.serialize();
 
-            $.post('/email' , serialise,  function (req, resp) {
-                    console.log("sbc")
-
+            $.post('/email/config' , serialise,  function (req, resp) {
+                    //console.log("sbc")
+                    alert("邮箱添加成功，请刷新页面确认邮箱是否无误，如果没有问题的话，可以进行其他的操作喽");
             })
 
-            // $wuxianyijin.attr('action','/wxyj');
-            // $wuxianyijin.attr('method','post');
-            // $wuxianyijin.submit();
+            // $email.attr('action','/wxyj');
+            // $email.attr('method','post');
+            // $email.submit();
         })
 
     });
