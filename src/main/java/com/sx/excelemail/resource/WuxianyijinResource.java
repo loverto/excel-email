@@ -71,17 +71,7 @@ public class WuxianyijinResource {
     public String wuxianyijinConfiguration(WuxianyijinConfiguration wuxianyijinConfiguration) throws Exception{
 
         try {
-            //邮箱设置
-//            if (StringUtils.isNotBlank(wuxianyijinConfiguration.getPassword())
-//                    &&StringUtils.isNotBlank(wuxianyijinConfiguration.getSmtpServer())
-//                    &&StringUtils.isNotBlank(wuxianyijinConfiguration.getUsername())
-//                    ){
-//                JavaMailSenderImpl javaMailSender = (JavaMailSenderImpl) mailSender;
-//                javaMailSender.setHost(wuxianyijinConfiguration.getSmtpServer());
-//                javaMailSender.setPassword(wuxianyijinConfiguration.getPassword());
-//                javaMailSender.setPort(wuxianyijinConfiguration.getSmtpPort());
-//                javaMailSender.setUsername(wuxianyijinConfiguration.getUsername());
-//            }
+
 
 
             MultipartFile dataExcel = wuxianyijinConfiguration.getDataExcel();
@@ -92,8 +82,15 @@ public class WuxianyijinResource {
 
             handlerDumpFileName(userDataPath,userDataFilename);
 
-//        File userDataDir = new File(userDataPath);
-//        if (userDataDir.)
+            if(StringUtils.isNotBlank(wuxianyijinConfiguration.getMailContent())){
+                mailContent = wuxianyijinConfiguration.getMailContent();
+            }
+
+            if (StringUtils.isNotBlank(wuxianyijinConfiguration.getMailSubject())){
+                mailSubject = wuxianyijinConfiguration.getMailSubject();
+            }
+
+
 
             dataExcel.transferTo(new File(dataPath+File.separator+dataFilename));
             userExcel.transferTo(new File(userDataPath+File.separator+userDataFilename));
@@ -111,14 +108,17 @@ public class WuxianyijinResource {
             return "redirect:/zhengzaifasong.html";
         } catch (IOException e) {
             e.printStackTrace();
+            return "redirect:/error.html";
         } catch (IllegalStateException e) {
             e.printStackTrace();
+            return "redirect:/error.html";
         } catch (InterruptedException e) {
             e.printStackTrace();
+            return "redirect:/error.html";
         }
 
 
-        return "redirect:/zhengzaifasong.html";
+        //return "redirect:/zhengzaifasong.html";
     }
 
     private void handlerDumpFileName(String dataPath,String dataFilename) {

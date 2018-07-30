@@ -8,10 +8,8 @@ import java.io.File;
 @Data
 public class WuxianyijinConfiguration {
 
-    private String username;
-    private String password;
-    private String smtpServer;
-    private int smtpPort;
+    private String mailSubject;
+    private String mailContent;
 
     private MultipartFile userExcel;
     private MultipartFile dataExcel;
