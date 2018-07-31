@@ -37,42 +37,42 @@ public class ExcelRead {
 
     @Test
     public void shebao() {
-        try {
-            ImportParams params = new ImportParams();
-            params.setHeadRows(3);
-            //params.setTitleRows(3);
-            params.setNeedSave(true);
-            List<ShebaoBean> result = ExcelImportUtil.importExcel(
-                    (new ClassPathResource("test.xlsx")).getFile(),
-                    ShebaoBean.class, params);
-            for (int i = 0; i < result.size(); i++) {
-                System.out.println(ReflectionToStringBuilder.toString(result.get(i)));
-            }
-            Assert.assertTrue(result.size() == 2);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try {
+//            ImportParams params = new ImportParams();
+//            params.setHeadRows(3);
+//            //params.setTitleRows(3);
+//            params.setNeedSave(true);
+//            List<ShebaoBean> result = ExcelImportUtil.importExcel(
+//                    (new ClassPathResource("test.xlsx")).getFile(),
+//                    ShebaoBean.class, params);
+//            for (int i = 0; i < result.size(); i++) {
+//                System.out.println(ReflectionToStringBuilder.toString(result.get(i)));
+//            }
+//            Assert.assertTrue(result.size() == 2);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
     }
 
 
     @Test
     public void gongjijin(){
-        try {
-            ImportParams params = new ImportParams();
-            params.setHeadRows(3);
-            params.setStartSheetIndex(1);
-            params.setSheetNum(1);
-            params.setNeedSave(true);
-            List<GongjijinBean> result = ExcelImportUtil.importExcel(
-                    (new ClassPathResource("test.xlsx")).getFile(),
-                    GongjijinBean.class, params);
-            for (int i = 0; i < result.size(); i++) {
-                System.out.println(ReflectionToStringBuilder.toString(result.get(i)));
-            }
-            Assert.assertTrue(result.size() == 2);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try {
+//            ImportParams params = new ImportParams();
+//            params.setHeadRows(3);
+//            params.setStartSheetIndex(1);
+//            params.setSheetNum(1);
+//            params.setNeedSave(true);
+//            List<GongjijinBean> result = ExcelImportUtil.importExcel(
+//                    (new ClassPathResource("test.xlsx")).getFile(),
+//                    GongjijinBean.class, params);
+//            for (int i = 0; i < result.size(); i++) {
+//                System.out.println(ReflectionToStringBuilder.toString(result.get(i)));
+//            }
+//            Assert.assertTrue(result.size() == 2);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
     }
 
     public static Map<String, String> objectToMap(Object obj) throws IllegalAccessException {
@@ -223,19 +223,19 @@ public class ExcelRead {
 
     @Test
     public void readUser(){
-        try {
-            ImportParams params = new ImportParams();
-            params.setNeedSave(true);
-            List<MailBean> result = ExcelImportUtil.importExcel(
-                    (new ClassPathResource("user.xlsx")).getFile(),
-                    MailBean.class, params);
-            for (int i = 0; i < result.size(); i++) {
-                System.out.println(ReflectionToStringBuilder.toString(result.get(i)));
-            }
-            Assert.assertTrue(result.size() == 1);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try {
+//            ImportParams params = new ImportParams();
+//            params.setNeedSave(true);
+//            List<MailBean> result = ExcelImportUtil.importExcel(
+//                    (new ClassPathResource("user.xlsx")).getFile(),
+//                    MailBean.class, params);
+//            for (int i = 0; i < result.size(); i++) {
+//                System.out.println(ReflectionToStringBuilder.toString(result.get(i)));
+//            }
+//            Assert.assertTrue(result.size() == 1);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
     }
 
 
@@ -243,44 +243,44 @@ public class ExcelRead {
 
     @Test
     public void export(){
-        try {
-            TemplateExportParams templateExportParams = new TemplateExportParams(
-                    "template.xlsx");
-            Map<String, Object> map = new HashMap<String, Object>();
-            map.put("date", "2014-12-25");
-            map.put("money", 2000000.00);
-            map.put("upperMoney", "贰佰万");
-            map.put("company", "执笔潜行科技有限公司");
-            map.put("bureau", "财政局");
-            map.put("person", "JueYue");
-            map.put("phone", "1879740****");
-            List<Map<String, String>> listMap = new ArrayList<Map<String, String>>();
-            for (int i = 0; i < 4; i++) {
-                Map<String, String> lm = new HashMap<String, String>();
-                lm.put("id", i + 1 + "");
-                lm.put("zijin", i * 10000 + "");
-                lm.put("bianma", "A001");
-                lm.put("mingcheng", "设计");
-                lm.put("xiangmumingcheng", "EasyPoi " + i + "期");
-                lm.put("quancheng", "开源项目");
-                lm.put("sqje", i * 10000 + "");
-                lm.put("hdje", i * 10000 + "");
-
-                listMap.add(lm);
-            }
-            map.put("maplist", listMap);
-
-            Workbook workbook = ExcelExportUtil.exportExcel(templateExportParams, map);
-            File savefile = new File("D:/excel/");
-            if (!savefile.exists()) {
-                savefile.mkdirs();
-            }
-            FileOutputStream fos = new FileOutputStream("D:/excel/专项支出用款申请书_map.xls");
-            workbook.write(fos);
-            fos.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            TemplateExportParams templateExportParams = new TemplateExportParams(
+//                    "template.xlsx");
+//            Map<String, Object> map = new HashMap<String, Object>();
+//            map.put("date", "2014-12-25");
+//            map.put("money", 2000000.00);
+//            map.put("upperMoney", "贰佰万");
+//            map.put("company", "执笔潜行科技有限公司");
+//            map.put("bureau", "财政局");
+//            map.put("person", "JueYue");
+//            map.put("phone", "1879740****");
+//            List<Map<String, String>> listMap = new ArrayList<Map<String, String>>();
+//            for (int i = 0; i < 4; i++) {
+//                Map<String, String> lm = new HashMap<String, String>();
+//                lm.put("id", i + 1 + "");
+//                lm.put("zijin", i * 10000 + "");
+//                lm.put("bianma", "A001");
+//                lm.put("mingcheng", "设计");
+//                lm.put("xiangmumingcheng", "EasyPoi " + i + "期");
+//                lm.put("quancheng", "开源项目");
+//                lm.put("sqje", i * 10000 + "");
+//                lm.put("hdje", i * 10000 + "");
+//
+//                listMap.add(lm);
+//            }
+//            map.put("maplist", listMap);
+//
+//            Workbook workbook = ExcelExportUtil.exportExcel(templateExportParams, map);
+//            File savefile = new File("D:/excel/");
+//            if (!savefile.exists()) {
+//                savefile.mkdirs();
+//            }
+//            FileOutputStream fos = new FileOutputStream("D:/excel/专项支出用款申请书_map.xls");
+//            workbook.write(fos);
+//            fos.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
     }
 

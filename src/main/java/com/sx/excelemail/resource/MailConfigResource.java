@@ -12,6 +12,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -28,8 +29,12 @@ public class MailConfigResource {
 
     @PostConstruct
     public void init(){
-        MailConfig mailConfig = mailConfigRepository.findAll().get(0);
-        setMailConfig(mailConfig);
+        List<MailConfig> all = mailConfigRepository.findAll();
+        if (all.size()>0){
+            MailConfig mailConfig = all.get(0);
+            setMailConfig(mailConfig);
+
+        }
 
     }
 

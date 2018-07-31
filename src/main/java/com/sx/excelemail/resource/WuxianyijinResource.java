@@ -90,6 +90,8 @@ public class WuxianyijinResource {
                 mailSubject = wuxianyijinConfiguration.getMailSubject();
             }
 
+            from = ((JavaMailSenderImpl)mailSender).getUsername();
+
 
 
             dataExcel.transferTo(new File(dataPath+File.separator+dataFilename));
