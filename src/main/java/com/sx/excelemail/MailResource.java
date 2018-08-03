@@ -8,7 +8,7 @@ public class MailResource {
 
     @RequestMapping("/")
     public String index(){
-        return "/index";
+        return "redirect:/index.html";
     }
 
 
