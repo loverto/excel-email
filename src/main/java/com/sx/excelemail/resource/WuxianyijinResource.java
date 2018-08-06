@@ -100,11 +100,11 @@ public class WuxianyijinResource {
 
             File file = new File(templateUrl + File.separator + templateFilename);
             //如果没有上传模板，默认位置
-            if (!file.exists()){
-                ClassPathResource classPathResource = new ClassPathResource(templateFilename);
-                templateUrl = classPathResource.getFile().getParent();
-               templateFilename = classPathResource.getFilename();
-            }
+//            if (!file.exists()){
+//                ClassPathResource classPathResource = new ClassPathResource(templateFilename);
+//                templateUrl = classPathResource.getFile().getParent();
+//               templateFilename = classPathResource.getFilename();
+//            }
 
             sendMail(userDataPath+File.separator+userDataFilename,dataPath+File.separator+dataFilename,outDataPath,templateUrl+File.separator+templateFilename,from,mailSubject,mailContent);
             return "redirect:/zhengzaifasong.html";
