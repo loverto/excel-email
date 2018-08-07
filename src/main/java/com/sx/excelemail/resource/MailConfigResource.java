@@ -5,9 +5,11 @@ import com.sx.excelemail.po.MailConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.annotation.Order;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.util.ObjectUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,12 +30,11 @@ public class MailConfigResource {
 
 
     @PostConstruct
+    @Order()
     public void init(){
-        List<MailConfig> all = mailConfigRepository.findAll();
-        if (all.size()>0){
-            MailConfig mailConfig = all.get(0);
-            setMailConfig(mailConfig);
-
+        MailConfig config = mailConfigRepository.findFirstByOrOrderByInsertDateDesc();
+        if (!ObjectUtils.isEmpty(config)){
+            setMailConfig(config);
         }
 
     }

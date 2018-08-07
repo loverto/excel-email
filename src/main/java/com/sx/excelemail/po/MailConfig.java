@@ -3,9 +3,7 @@ package com.sx.excelemail.po;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Date;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoField;
@@ -16,14 +14,19 @@ import java.time.temporal.TemporalField;
 public class MailConfig {
 
     @Id
-    @GenericGenerator(name = "uuid",strategy = "uuid")
-    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid2",strategy = "uuid2")
+    @GeneratedValue(generator = "uuid2")
     private String uuid;
 
     private String username;
     private String password;
     private String smtpServer;
     private int smtpPort;
+    private String typeId;
 
-    private Date insertDate = new Date(new java.util.Date().getTime());
+    @OneToOne
+    @JoinColumn(name = "typeId",referencedColumnName = "id")
+    private MailType mailType;
+
+    private LocalDateTime insertDate = LocalDateTime.now();
 }
