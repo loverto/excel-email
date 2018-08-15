@@ -5,7 +5,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
+import org.springframework.stereotype.Component;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -14,11 +16,11 @@ import java.net.UnknownHostException;
 public class ExcelEmailApplication {
 	private static final Logger log = LoggerFactory.getLogger(ExcelEmailApplication.class);
 
-	private final Environment env;
+	//private final Environment env;
 
-	public ExcelEmailApplication(Environment env) {
-		this.env = env;
-	}
+	//public ExcelEmailApplication(Environment env) {
+	//	this.env = env;
+	//}
 
 	public static void main(String[] args) throws UnknownHostException {
 		SpringApplication app = new SpringApplication(ExcelEmailApplication.class);
