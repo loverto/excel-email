@@ -32,7 +32,7 @@ public class MailConfigResource {
     @PostConstruct
     @Order()
     public void init(){
-        MailConfig config = mailConfigRepository.findFirstByOrOrderByInsertDateDesc();
+        MailConfig config = mailConfigRepository.findFirstByOrderByInsertDateDesc();
         if (!ObjectUtils.isEmpty(config)){
             setMailConfig(config);
         }

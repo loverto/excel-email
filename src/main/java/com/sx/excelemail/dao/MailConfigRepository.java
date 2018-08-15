@@ -6,5 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface MailConfigRepository extends JpaRepository<MailConfig,String> {
-    MailConfig findFirstByOrOrderByInsertDateDesc();
+    //MailConfig findFirstByOrderByInsertDateDesc();
+    MailConfig findFirstByOrderByInsertDateDesc();
 }

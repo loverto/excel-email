@@ -24,9 +24,7 @@ public class MailConfig {
     private int smtpPort;
     private String typeId;
 
-    @OneToOne
-    @JoinColumn(name = "typeId",referencedColumnName = "id")
-    private MailType mailType;
+    private String mailType;
 
     private LocalDateTime insertDate = LocalDateTime.now();
 }

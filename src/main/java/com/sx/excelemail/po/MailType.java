@@ -15,7 +15,7 @@ public class MailType {
     @Id
     private String id;
     private String name;
-    private String order;
+    private String typeOrder;
     private LocalDateTime createTime;
 
 }
