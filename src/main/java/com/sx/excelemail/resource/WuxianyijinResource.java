@@ -2,22 +2,19 @@ package com.sx.excelemail.resource;
 
 import com.sx.excelemail.MailUtil;
 import com.sx.excelemail.po.MailBean;
-import com.sx.excelemail.po.WuxianyijinConfiguration;
+import com.sx.excelemail.po.MailConfiguration;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.PostConstruct;
 import java.io.File;
-import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
@@ -68,7 +65,7 @@ public class WuxianyijinResource {
 
 
     @PostMapping("/wxyj")
-    public String wuxianyijinConfiguration(WuxianyijinConfiguration wuxianyijinConfiguration) throws Exception{
+    public String wuxianyijinConfiguration(MailConfiguration wuxianyijinConfiguration) throws Exception{
 
         try {
 

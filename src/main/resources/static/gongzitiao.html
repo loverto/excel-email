@@ -290,7 +290,7 @@
 						</div>
 
 						<div>
-							<form class="form-horizontal" role="form" id="wuxianyijin" enctype="multipart/form-data">
+							<form class="form-horizontal" role="form" id="salary" enctype="multipart/form-data">
 
 								<div class="space-4"></div>
 
@@ -312,9 +312,9 @@
 									</label>
 
 									<div class="col-sm-9">
-										<input type="textarea" id="form-field-4" name="mailContent"
-											   placeholder="smtp.aliyun.com" value="工资条通知"
-											   class="col-xs-10 col-sm-5"/>
+										<textarea type="" id="form-field-4" name="mailContent"
+											   placeholder="工资条通知" value="工资条通知"
+												  class="col-xs-10 col-sm-5"></textarea>
 									</div>
 								</div>
 
@@ -614,7 +614,7 @@
 
 
         $('#sm').click(function () {
-            let $wuxianyijin = $('#wuxianyijin');
+            let salary = $('#salary');
 
             // let serialise = $wuxianyijin.serialize();
             //
@@ -623,9 +623,9 @@
             //
             // })
 
-            $wuxianyijin.attr('action','/wxyj');
-            $wuxianyijin.attr('method','post');
-            $wuxianyijin.submit();
+            salary.attr('action','/salary');
+            salary.attr('method','post');
+            salary.submit();
         })
 
     });

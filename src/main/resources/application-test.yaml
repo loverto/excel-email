@@ -1,4 +1,15 @@
 
+salary:
+  data:
+    path: D:\upload\salary\
+    filename: test.xlsx
+  mail:
+    content: 工资上调
+    from: ${spring.mail.username}
+    subject: 工资上调
+  out:
+    data:
+      path: D:\excel\salary\
 
 
 data:
