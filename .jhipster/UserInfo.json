@@ -33,7 +33,7 @@
         }
     ],
     "relationships": [],
-    "changelogDate": "20190720045145",
+    "changelogDate": "20190720095531",
     "javadoc": "The UserInfo entity.\n@author ylf",
     "entityTableName": "user_info",
     "dto": "no",

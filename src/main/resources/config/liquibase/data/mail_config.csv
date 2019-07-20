@@ -1,11 +1,11 @@
-id;username;password;smtp_server;smtp_port;type_id;mail_type
-1;intermediate Table quantify;Wyoming interface Cotton;quantify;34080;Infrastructure SSL bandwidth;application Configurable iterate
-2;Berkshire navigating;superstructure;streamline;1083;Internal Fantastic time-frame;CFP Franc Borders Borders
-3;Common;Money Market Account;Danish Krone parse;79157;back-end Unbranded Cambridgeshire;Designer
-4;mindshare;Guam bandwidth Liaison;program Auto Loan Account Refined;8410;Algerian Dinar Fantastic Fresh Salad;Steel Avon Visionary
-5;exploit transition;User-centric Principal Pennsylvania;repurpose Sleek;77714;Oklahoma communities;array supply-chains Advanced
-6;Parkway Handmade Wooden Cheese;quantifying;synthesize Idaho Markets;37487;asymmetric EXE;web services
-7;Industrial Designer Incredible Fresh Car;Principal Senior;Paraguay;96930;Central African Republic;magenta heuristic
-8;Credit Card Account Maryland Legacy;Product;Brand Regional Court;62013;client-driven olive;facilitate Persevering
-9;Fantastic;zero defect Ridges Beauty;groupware;81379;Pound Sterling Keyboard;Licensed Usability models
-10;Personal Loan Account markets;SCSI Aruba Chair;drive online;98727;Shirt Credit Card Account disintermediate;transmitting Tennessee Practical Steel Shirt
+id;username;password;smtp_server;smtp_port;type_id;mail_type;created_by
+1;intermediate Table quantify;Wyoming interface Cotton;quantify;34080;Infrastructure SSL bandwidth;application Configurable iterate;system
+2;Berkshire navigating;superstructure;streamline;1083;Internal Fantastic time-frame;CFP Franc Borders Borders;system
+3;Common;Money Market Account;Danish Krone parse;79157;back-end Unbranded Cambridgeshire;Designer;system
+4;mindshare;Guam bandwidth Liaison;program Auto Loan Account Refined;8410;Algerian Dinar Fantastic Fresh Salad;Steel Avon Visionary;system
+5;exploit transition;User-centric Principal Pennsylvania;repurpose Sleek;77714;Oklahoma communities;array supply-chains Advanced;system
+6;Parkway Handmade Wooden Cheese;quantifying;synthesize Idaho Markets;37487;asymmetric EXE;web services;system
+7;Industrial Designer Incredible Fresh Car;Principal Senior;Paraguay;96930;Central African Republic;magenta heuristic;system
+8;Credit Card Account Maryland Legacy;Product;Brand Regional Court;62013;client-driven olive;facilitate Persevering;system
+9;Fantastic;zero defect Ridges Beauty;groupware;81379;Pound Sterling Keyboard;Licensed Usability models;system
+10;Personal Loan Account markets;SCSI Aruba Chair;drive online;98727;Shirt Credit Card Account disintermediate;transmitting Tennessee Practical Steel Shirt;system

@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { JhiLanguageService } from 'ng-jhipster';
 import { JhiLanguageHelper } from 'app/core';
 import { ExcelEmailSharedModule } from 'app/shared';
+import { EntityAuditModule } from './entity-audit/entity-audit.module';
 /* jhipster-needle-add-admin-module-import - JHipster will add admin modules imports here */
 
 import {
@@ -23,6 +24,7 @@ import {
 @NgModule({
   imports: [
     ExcelEmailSharedModule,
+    EntityAuditModule,
     /* jhipster-needle-add-admin-module - JHipster will add admin modules here */
     RouterModule.forChild(adminState)
   ],

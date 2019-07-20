@@ -78,7 +78,7 @@
         }
     ],
     "relationships": [],
-    "changelogDate": "20190720045147",
+    "changelogDate": "20190720095533",
     "javadoc": "The SheBao entity.\n@author ylf",
     "entityTableName": "she_bao",
     "dto": "no",

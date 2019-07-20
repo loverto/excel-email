@@ -15,7 +15,7 @@ import java.io.Serializable;
 @ApiModel(description = "The MailConfig entity. @author ylf")
 @Entity
 @Table(name = "mail_config")
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class MailConfig extends AbstractAuditingEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;

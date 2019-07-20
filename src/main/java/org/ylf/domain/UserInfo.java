@@ -15,7 +15,7 @@ import java.io.Serializable;
 @ApiModel(description = "The UserInfo entity. @author ylf")
 @Entity
 @Table(name = "user_info")
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class UserInfo extends AbstractAuditingEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;

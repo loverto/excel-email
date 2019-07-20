@@ -7,6 +7,10 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "数据",
+        "gongjijin": "公积金",
+        "userInfo": "用户信息",
+        "mailConfig": "邮箱信息",
+        "sheBao": "社保",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {
@@ -29,6 +33,7 @@
         "audits": "审核",
         "apidocs": "API",
         "database": "数据库",
+        "entity-audit": "实体审计",
         "jhipster-needle-menu-add-admin-element": "JHipster will add additional menu entries here (do not translate!)"
       },
       "language": "语言"
