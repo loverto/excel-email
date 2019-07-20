@@ -11,7 +11,7 @@
     "packageFolder": "org/ylf",
     "serverPort": "8080",
     "authenticationType": "jwt",
-    "cacheProvider": "infinispan",
+    "cacheProvider": "hazelcast",
     "enableHibernateCache": true,
     "websocket": false,
     "databaseType": "sql",

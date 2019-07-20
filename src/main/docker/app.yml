@@ -8,7 +8,6 @@ services:
       - MANAGEMENT_METRICS_EXPORT_PROMETHEUS_ENABLED=true
       - SPRING_DATASOURCE_URL=jdbc:mysql://excelemail-mysql:3306/excelemail?useUnicode=true&characterEncoding=utf8&useSSL=false
       - JHIPSTER_SLEEP=30 # gives time for other services to boot before the application
-      - JAVA_OPTS=-Djgroups.tcp.address=NON_LOOPBACK -Djava.net.preferIPv4Stack=true
     ports:
       - 8080:8080
   excelemail-mysql:

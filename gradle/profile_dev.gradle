@@ -28,7 +28,6 @@ springBoot {
 
 bootRun {
     args = []
-    jvmArgs = ["-Djgroups.tcp.address=NON_LOOPBACK", "-Djava.net.preferIPv4Stack=true"]
 }
 
 task webpackBuildDev(type: NpmTask) {

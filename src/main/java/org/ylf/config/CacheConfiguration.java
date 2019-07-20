@@ -1,206 +1,116 @@
 package org.ylf.config;
 
-import org.springframework.cache.annotation.EnableCaching;
-import org.springframework.context.annotation.*;
-import org.infinispan.configuration.cache.CacheMode;
-import org.infinispan.configuration.cache.ConfigurationBuilder;
-import org.infinispan.configuration.global.GlobalConfigurationBuilder;
+import io.github.jhipster.config.JHipsterConstants;
+import io.github.jhipster.config.JHipsterProperties;
+
+import com.hazelcast.config.*;
+import com.hazelcast.core.HazelcastInstance;
+import com.hazelcast.core.Hazelcast;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import io.github.jhipster.config.JHipsterProperties;
-import java.util.concurrent.TimeUnit;
-import org.infinispan.eviction.EvictionType;
-import org.infinispan.manager.EmbeddedCacheManager;
-import org.infinispan.spring.starter.embedded.InfinispanCacheConfigurer;
-import org.infinispan.spring.starter.embedded.InfinispanEmbeddedCacheManagerAutoConfiguration;
-import org.infinispan.spring.starter.embedded.InfinispanGlobalConfigurer;
-import org.infinispan.transaction.TransactionMode;
-import org.infinispan.jcache.embedded.ConfigurationAdapter;
-import org.infinispan.jcache.embedded.JCache;
-import org.infinispan.jcache.embedded.JCacheManager;
-import javax.cache.Caching;
-import javax.cache.spi.CachingProvider;
-import java.net.URI;
+
+import org.springframework.cache.CacheManager;
+import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.context.annotation.*;
+import org.springframework.beans.factory.DisposableBean;
+import org.springframework.core.env.Environment;
+import org.springframework.core.env.Profiles;
 
 @Configuration
 @EnableCaching
-@Import(InfinispanEmbeddedCacheManagerAutoConfiguration.class)
-public class CacheConfiguration {
+public class CacheConfiguration implements DisposableBean {
 
     private final Logger log = LoggerFactory.getLogger(CacheConfiguration.class);
 
-    // Initialize the cache in a non Spring-managed bean
-    private static EmbeddedCacheManager cacheManager;
+    private final Environment env;
 
-    public static EmbeddedCacheManager getCacheManager(){
-        return cacheManager;
+    public CacheConfiguration(Environment env) {
+        this.env = env;
     }
 
-    public static void setCacheManager(EmbeddedCacheManager cacheManager) {
-        CacheConfiguration.cacheManager = cacheManager;
+    @Override
+    public void destroy() throws Exception {
+        log.info("Closing Cache Manager");
+        Hazelcast.shutdownAll();
     }
 
-    /**
-     * Inject a {@link org.infinispan.configuration.global.GlobalConfiguration GlobalConfiguration} for Infinispan cache.
-     * <p>
-     * If a service discovery solution is enabled (JHipster Registry or Consul),
-     * then the host list will be populated from the service discovery.
-     *
-     * <p>
-     * If the service discovery is not enabled, host discovery will be based on
-     * the default transport settings defined in the 'config-file' packaged within
-     * the Jar. The 'config-file' can be overridden using the application property
-     * <i>jhipster.cache.infinispan.config-file</i>
-     *
-     * <p>
-     * If no service discovery is defined, you have the choice of 'config-file'
-     * based on the underlying platform for hosts discovery. Infinispan
-     * supports discovery natively for most of the platforms like Kubernetes/OpenShift,
-     * AWS, Azure and Google.
-     *
-     * @param jHipsterProperties the jhipster properties to configure from.
-     * @return the infinispan global configurer.
-     */
     @Bean
-    public InfinispanGlobalConfigurer globalConfiguration(JHipsterProperties jHipsterProperties) {
-        log.info("Defining Infinispan Global Configuration");
-            return () -> GlobalConfigurationBuilder
-                    .defaultClusteredBuilder().defaultCacheName("infinispan-excelEmail-cluster-cache").transport().defaultTransport()
-                    .addProperty("configurationFile", jHipsterProperties.getCache().getInfinispan().getConfigFile())
-                    .clusterName("infinispan-excelEmail-cluster").globalJmxStatistics()
-                    .enabled(jHipsterProperties.getCache().getInfinispan().isStatsEnabled())
-                    .allowDuplicateDomains(true).build();
+    public CacheManager cacheManager(HazelcastInstance hazelcastInstance) {
+        log.debug("Starting HazelcastCacheManager");
+        return new com.hazelcast.spring.cache.HazelcastCacheManager(hazelcastInstance);
     }
 
-    /**
-     * Initialize cache configuration for Hibernate L2 cache and Spring Cache.
-     * <p>
-     * There are three different modes: local, distributed and replicated, and L2 cache options are pre-configured.
-     *
-     * <p>
-     * It supports both jCache and Spring cache abstractions.
-     * <p>
-     * Usage:
-     *  <ol>
-     *      <li>
-     *          jCache:
-     *          <pre class="code">@CacheResult(cacheName = "dist-app-data") </pre>
-     *              - for creating a distributed cache. In a similar way other cache names and options can be used
-     *      </li>
-     *      <li>
-     *          Spring Cache:
-     *          <pre class="code">@Cacheable(value = "repl-app-data") </pre>
-     *              - for creating a replicated cache. In a similar way other cache names and options can be used
-     *      </li>
-     *      <li>
-     *          Cache manager can also be injected through DI/CDI and data can be manipulated using Infinispan APIs,
-     *          <pre class="code">
-     *          &#064;Autowired (or) &#064;Inject
-     *          private EmbeddedCacheManager cacheManager;
-     *
-     *          void cacheSample(){
-     *              cacheManager.getCache("dist-app-data").put("hi", "there");
-     *          }
-     *          </pre>
-     *      </li>
-     *  </ol>
-     *
-     * @param jHipsterProperties the jhipster properties to configure from.
-     * @return the infinispan cache configurer.
-     */
     @Bean
-    public InfinispanCacheConfigurer cacheConfigurer(JHipsterProperties jHipsterProperties) {
-        log.info("Defining {} configuration", "app-data for local, replicated and distributed modes");
-        JHipsterProperties.Cache.Infinispan cacheInfo = jHipsterProperties.getCache().getInfinispan();
-
-        return manager -> {
-            // initialize application cache
-            manager.defineConfiguration("local-app-data", new ConfigurationBuilder()
-                .clustering().cacheMode(CacheMode.LOCAL)
-                .jmxStatistics().enabled(cacheInfo.isStatsEnabled())
-                .memory().evictionType(EvictionType.COUNT).size(cacheInfo.getLocal().getMaxEntries()).expiration()
-                .lifespan(cacheInfo.getLocal().getTimeToLiveSeconds(), TimeUnit.SECONDS).build());
-            manager.defineConfiguration("dist-app-data", new ConfigurationBuilder()
-                .clustering().cacheMode(CacheMode.DIST_SYNC).hash().numOwners(cacheInfo.getDistributed().getInstanceCount())
-                .jmxStatistics().enabled(cacheInfo.isStatsEnabled())
-                .memory().evictionType(EvictionType.COUNT).size(cacheInfo.getDistributed().getMaxEntries()).expiration()
-                .lifespan(cacheInfo.getDistributed().getTimeToLiveSeconds(), TimeUnit.SECONDS).build());
-            manager.defineConfiguration("repl-app-data", new ConfigurationBuilder()
-                .clustering().cacheMode(CacheMode.REPL_SYNC)
-                .jmxStatistics().enabled(cacheInfo.isStatsEnabled())
-                .memory().evictionType(EvictionType.COUNT).size(cacheInfo.getReplicated().getMaxEntries()).expiration()
-                .lifespan(cacheInfo.getReplicated().getTimeToLiveSeconds(), TimeUnit.SECONDS).build());
-
-            // initialize Hibernate L2 cache
-            manager.defineConfiguration("entity", new ConfigurationBuilder().clustering().cacheMode(CacheMode.INVALIDATION_SYNC)
-                .jmxStatistics().enabled(cacheInfo.isStatsEnabled())
-                .locking().concurrencyLevel(1000).lockAcquisitionTimeout(15000).build());
-            manager.defineConfiguration("replicated-entity", new ConfigurationBuilder().clustering().cacheMode(CacheMode.REPL_SYNC)
-                .jmxStatistics().enabled(cacheInfo.isStatsEnabled())
-                .locking().concurrencyLevel(1000).lockAcquisitionTimeout(15000).build());
-            manager.defineConfiguration("local-query", new ConfigurationBuilder().clustering().cacheMode(CacheMode.LOCAL)
-                .jmxStatistics().enabled(cacheInfo.isStatsEnabled())
-                .locking().concurrencyLevel(1000).lockAcquisitionTimeout(15000).build());
-            manager.defineConfiguration("replicated-query", new ConfigurationBuilder().clustering().cacheMode(CacheMode.REPL_ASYNC)
-                .jmxStatistics().enabled(cacheInfo.isStatsEnabled())
-                .locking().concurrencyLevel(1000).lockAcquisitionTimeout(15000).build());
-            manager.defineConfiguration("timestamps", new ConfigurationBuilder().clustering().cacheMode(CacheMode.REPL_ASYNC)
-                .jmxStatistics().enabled(cacheInfo.isStatsEnabled())
-                .locking().concurrencyLevel(1000).lockAcquisitionTimeout(15000).build());
-            manager.defineConfiguration("pending-puts", new ConfigurationBuilder().clustering().cacheMode(CacheMode.LOCAL)
-                .jmxStatistics().enabled(cacheInfo.isStatsEnabled())
-                .simpleCache(true).transaction().transactionMode(TransactionMode.NON_TRANSACTIONAL).expiration().maxIdle(60000).build());
-
-            setCacheManager(manager);
-        };
-    }
-
-    /**
-     * <p>
-     * Instance of {@link JCacheManager} with cache being managed by the underlying Infinispan layer. This helps to record stats
-     * info if enabled and the same is accessible through {@code MBX:javax.cache,type=CacheStatistics}.
-     *
-     * <p>
-     * jCache stats are at instance level. If you need stats at clustering level, then it needs to be retrieved from {@code MBX:org.infinispan}
-     *
-     * @param cacheManager the embedded cache manager.
-     * @param jHipsterProperties the jhipster properties to configure from.
-     * @return the jcache manager.
-     */
-    @Bean
-    public JCacheManager getJCacheManager(EmbeddedCacheManager cacheManager, JHipsterProperties jHipsterProperties){
-        return new InfinispanJCacheManager(Caching.getCachingProvider().getDefaultURI(), cacheManager,
-            Caching.getCachingProvider(), jHipsterProperties);
-    }
-
-    class InfinispanJCacheManager extends JCacheManager {
-
-        public InfinispanJCacheManager(URI uri, EmbeddedCacheManager cacheManager, CachingProvider provider,
-                                       JHipsterProperties jHipsterProperties) {
-            super(uri, cacheManager, provider);
-            // register individual caches to make the stats info available.
-            registerPredefinedCache(org.ylf.repository.UserRepository.USERS_BY_LOGIN_CACHE, new JCache<Object, Object>(
-                cacheManager.getCache(org.ylf.repository.UserRepository.USERS_BY_LOGIN_CACHE).getAdvancedCache(), this,
-                ConfigurationAdapter.create()));
-            registerPredefinedCache(org.ylf.repository.UserRepository.USERS_BY_EMAIL_CACHE, new JCache<Object, Object>(
-                cacheManager.getCache(org.ylf.repository.UserRepository.USERS_BY_EMAIL_CACHE).getAdvancedCache(), this,
-                ConfigurationAdapter.create()));
-            registerPredefinedCache(org.ylf.domain.User.class.getName(), new JCache<Object, Object>(
-                cacheManager.getCache(org.ylf.domain.User.class.getName()).getAdvancedCache(), this,
-                ConfigurationAdapter.create()));
-            registerPredefinedCache(org.ylf.domain.Authority.class.getName(), new JCache<Object, Object>(
-                cacheManager.getCache(org.ylf.domain.Authority.class.getName()).getAdvancedCache(), this,
-                ConfigurationAdapter.create()));
-            registerPredefinedCache(org.ylf.domain.User.class.getName() + ".authorities", new JCache<Object, Object>(
-                cacheManager.getCache(org.ylf.domain.User.class.getName() + ".authorities").getAdvancedCache(), this,
-                ConfigurationAdapter.create()));
-            // jhipster-needle-infinispan-add-entry
-            if (jHipsterProperties.getCache().getInfinispan().isStatsEnabled()) {
-                for (String cacheName : cacheManager.getCacheNames()) {
-                    enableStatistics(cacheName, true);
-                }
-            }
+    public HazelcastInstance hazelcastInstance(JHipsterProperties jHipsterProperties) {
+        log.debug("Configuring Hazelcast");
+        HazelcastInstance hazelCastInstance = Hazelcast.getHazelcastInstanceByName("excelEmail");
+        if (hazelCastInstance != null) {
+            log.debug("Hazelcast already initialized");
+            return hazelCastInstance;
         }
+        Config config = new Config();
+        config.setInstanceName("excelEmail");
+        config.getNetworkConfig().setPort(5701);
+        config.getNetworkConfig().setPortAutoIncrement(true);
+
+        // In development, remove multicast auto-configuration
+        if (env.acceptsProfiles(Profiles.of(JHipsterConstants.SPRING_PROFILE_DEVELOPMENT))) {
+            System.setProperty("hazelcast.local.localAddress", "127.0.0.1");
+
+            config.getNetworkConfig().getJoin().getAwsConfig().setEnabled(false);
+            config.getNetworkConfig().getJoin().getMulticastConfig().setEnabled(false);
+            config.getNetworkConfig().getJoin().getTcpIpConfig().setEnabled(false);
+        }
+        config.getMapConfigs().put("default", initializeDefaultMapConfig(jHipsterProperties));
+
+        // Full reference is available at: http://docs.hazelcast.org/docs/management-center/3.9/manual/html/Deploying_and_Starting.html
+        config.setManagementCenterConfig(initializeDefaultManagementCenterConfig(jHipsterProperties));
+        config.getMapConfigs().put("org.ylf.domain.*", initializeDomainMapConfig(jHipsterProperties));
+        return Hazelcast.newHazelcastInstance(config);
     }
 
+    private ManagementCenterConfig initializeDefaultManagementCenterConfig(JHipsterProperties jHipsterProperties) {
+        ManagementCenterConfig managementCenterConfig = new ManagementCenterConfig();
+        managementCenterConfig.setEnabled(jHipsterProperties.getCache().getHazelcast().getManagementCenter().isEnabled());
+        managementCenterConfig.setUrl(jHipsterProperties.getCache().getHazelcast().getManagementCenter().getUrl());
+        managementCenterConfig.setUpdateInterval(jHipsterProperties.getCache().getHazelcast().getManagementCenter().getUpdateInterval());
+        return managementCenterConfig;
+    }
+
+    private MapConfig initializeDefaultMapConfig(JHipsterProperties jHipsterProperties) {
+        MapConfig mapConfig = new MapConfig();
+
+        /*
+        Number of backups. If 1 is set as the backup-count for example,
+        then all entries of the map will be copied to another JVM for
+        fail-safety. Valid numbers are 0 (no backup), 1, 2, 3.
+        */
+        mapConfig.setBackupCount(jHipsterProperties.getCache().getHazelcast().getBackupCount());
+
+        /*
+        Valid values are:
+        NONE (no eviction),
+        LRU (Least Recently Used),
+        LFU (Least Frequently Used).
+        NONE is the default.
+        */
+        mapConfig.setEvictionPolicy(EvictionPolicy.LRU);
+
+        /*
+        Maximum size of the map. When max size is reached,
+        map is evicted based on the policy defined.
+        Any integer between 0 and Integer.MAX_VALUE. 0 means
+        Integer.MAX_VALUE. Default is 0.
+        */
+        mapConfig.setMaxSizeConfig(new MaxSizeConfig(0, MaxSizeConfig.MaxSizePolicy.USED_HEAP_SIZE));
+
+        return mapConfig;
+    }
+
+    private MapConfig initializeDomainMapConfig(JHipsterProperties jHipsterProperties) {
+        MapConfig mapConfig = new MapConfig();
+        mapConfig.setTimeToLiveSeconds(jHipsterProperties.getCache().getHazelcast().getTimeToLiveSeconds());
+        return mapConfig;
+    }
 }

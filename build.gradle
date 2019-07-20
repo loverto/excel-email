@@ -202,13 +202,9 @@ dependencies {
     implementation "com.fasterxml.jackson.core:jackson-annotations"
     implementation "com.fasterxml.jackson.core:jackson-databind"
     implementation "com.fasterxml.jackson.module:jackson-module-afterburner"
-    implementation "org.infinispan:infinispan-hibernate-cache-v53"
-    implementation "org.infinispan:infinispan-spring-boot-starter-embedded"
-    implementation "org.infinispan:infinispan-core"
-    implementation "org.infinispan:infinispan-jcache"
-    implementation ("org.infinispan:infinispan-cloud") {
-        exclude module: "undertow-core"
-    }
+    implementation "com.hazelcast:hazelcast"
+    implementation "com.hazelcast:hazelcast-hibernate53"
+    implementation "com.hazelcast:hazelcast-spring"
     implementation "javax.cache:cache-api"
     implementation "org.hibernate:hibernate-core"
     implementation "com.zaxxer:HikariCP"
