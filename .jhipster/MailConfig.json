@@ -1,0 +1,47 @@
+{
+    "name": "MailConfig",
+    "fields": [
+        {
+            "fieldName": "username",
+            "javadoc": "邮件用户名",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "password",
+            "javadoc": "邮件密码",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "smtpServer",
+            "javadoc": "smtp服务器ip",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "smtpPort",
+            "javadoc": "smtp服务器端口",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "typeId",
+            "javadoc": "类型",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "mailType",
+            "javadoc": "邮件类型",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20190720045146",
+    "javadoc": "The MailConfig entity.\n@author ylf",
+    "entityTableName": "mail_config",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "enableEntityAudit": true
+}

@@ -1,0 +1,54 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-mail-config-heading" jhiTranslate="excelEmailApp.mailConfig.home.createOrEditLabel">Create or edit a Mail Config</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="excelEmailApp.mailConfig.username" for="field_username" [ngbTooltip]="'excelEmailApp.mailConfig.help.username' | translate">Username</label>
+                    <input type="text" class="form-control" name="username" id="field_username"
+                           formControlName="username"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="excelEmailApp.mailConfig.password" for="field_password" [ngbTooltip]="'excelEmailApp.mailConfig.help.password' | translate">Password</label>
+                    <input type="text" class="form-control" name="password" id="field_password"
+                           formControlName="password"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="excelEmailApp.mailConfig.smtpServer" for="field_smtpServer" [ngbTooltip]="'excelEmailApp.mailConfig.help.smtpServer' | translate">Smtp Server</label>
+                    <input type="text" class="form-control" name="smtpServer" id="field_smtpServer"
+                           formControlName="smtpServer"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="excelEmailApp.mailConfig.smtpPort" for="field_smtpPort" [ngbTooltip]="'excelEmailApp.mailConfig.help.smtpPort' | translate">Smtp Port</label>
+                    <input type="number" class="form-control" name="smtpPort" id="field_smtpPort"
+                           formControlName="smtpPort"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="excelEmailApp.mailConfig.typeId" for="field_typeId" [ngbTooltip]="'excelEmailApp.mailConfig.help.typeId' | translate">Type Id</label>
+                    <input type="text" class="form-control" name="typeId" id="field_typeId"
+                           formControlName="typeId"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="excelEmailApp.mailConfig.mailType" for="field_mailType" [ngbTooltip]="'excelEmailApp.mailConfig.help.mailType' | translate">Mail Type</label>
+                    <input type="text" class="form-control" name="mailType" id="field_mailType"
+                           formControlName="mailType"/>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

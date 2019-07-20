@@ -1,0 +1,47 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="userInfo">
+            <h2><span jhiTranslate="excelEmailApp.userInfo.detail.title">User Info</span> {{userInfo.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="excelEmailApp.userInfo.name" [ngbTooltip]="'excelEmailApp.userInfo.help.name' | translate">Name</span></dt>
+                <dd>
+                    <span>{{userInfo.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="excelEmailApp.userInfo.mail" [ngbTooltip]="'excelEmailApp.userInfo.help.mail' | translate">Mail</span></dt>
+                <dd>
+                    <span>{{userInfo.mail}}</span>
+                </dd>
+                <dt><span jhiTranslate="excelEmailApp.userInfo.internetMail" [ngbTooltip]="'excelEmailApp.userInfo.help.internetMail' | translate">Internet Mail</span></dt>
+                <dd>
+                    <span>{{userInfo.internetMail}}</span>
+                </dd>
+                <dt><span jhiTranslate="excelEmailApp.userInfo.weiXin" [ngbTooltip]="'excelEmailApp.userInfo.help.weiXin' | translate">Wei Xin</span></dt>
+                <dd>
+                    <span>{{userInfo.weiXin}}</span>
+                </dd>
+                <dt><span jhiTranslate="excelEmailApp.userInfo.qq" [ngbTooltip]="'excelEmailApp.userInfo.help.qq' | translate">Qq</span></dt>
+                <dd>
+                    <span>{{userInfo.qq}}</span>
+                </dd>
+                <dt><span jhiTranslate="excelEmailApp.userInfo.phone" [ngbTooltip]="'excelEmailApp.userInfo.help.phone' | translate">Phone</span></dt>
+                <dd>
+                    <span>{{userInfo.phone}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/user-info', userInfo.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

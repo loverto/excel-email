@@ -1,0 +1,35 @@
+{
+  "excelEmailApp": {
+    "mailConfig": {
+      "home": {
+        "title": "Mail Configs",
+        "createLabel": "Create a new Mail Config",
+        "createOrEditLabel": "Create or edit a Mail Config",
+        "notFound": "No Mail Config found"
+      },
+      "created": "A new Mail Config is created with identifier {{ param }}",
+      "updated": "A Mail Config is updated with identifier {{ param }}",
+      "deleted": "A Mail Config is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Mail Config {{ id }}?"
+      },
+      "detail": {
+        "title": "Mail Config"
+      },
+      "username": "Username",
+      "password": "Password",
+      "smtpServer": "Smtp Server",
+      "smtpPort": "Smtp Port",
+      "typeId": "Type Id",
+      "mailType": "Mail Type",
+      "help": {
+        "username": "邮件用户名",
+        "password": "邮件密码",
+        "smtpServer": "smtp服务器ip",
+        "smtpPort": "smtp服务器端口",
+        "typeId": "类型",
+        "mailType": "邮件类型"
+      }
+    }
+  }
+}

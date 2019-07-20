@@ -1,0 +1,99 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-she-bao-heading" jhiTranslate="excelEmailApp.sheBao.home.createOrEditLabel">Create or edit a She Bao</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="excelEmailApp.sheBao.xh" for="field_xh" [ngbTooltip]="'excelEmailApp.sheBao.help.xh' | translate">Xh</label>
+                    <input type="number" class="form-control" name="xh" id="field_xh"
+                           formControlName="xh"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="excelEmailApp.sheBao.dept" for="field_dept" [ngbTooltip]="'excelEmailApp.sheBao.help.dept' | translate">Dept</label>
+                    <input type="text" class="form-control" name="dept" id="field_dept"
+                           formControlName="dept"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="excelEmailApp.sheBao.name" for="field_name" [ngbTooltip]="'excelEmailApp.sheBao.help.name' | translate">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                           formControlName="name"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="excelEmailApp.sheBao.sbjsYanglaoShiye" for="field_sbjsYanglaoShiye" [ngbTooltip]="'excelEmailApp.sheBao.help.sbjsYanglaoShiye' | translate">Sbjs Yanglao Shiye</label>
+                    <input type="text" class="form-control" name="sbjsYanglaoShiye" id="field_sbjsYanglaoShiye"
+                           formControlName="sbjsYanglaoShiye"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="excelEmailApp.sheBao.sbjsYiShangSheng" for="field_sbjsYiShangSheng" [ngbTooltip]="'excelEmailApp.sheBao.help.sbjsYiShangSheng' | translate">Sbjs Yi Shang Sheng</label>
+                    <input type="text" class="form-control" name="sbjsYiShangSheng" id="field_sbjsYiShangSheng"
+                           formControlName="sbjsYiShangSheng"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="excelEmailApp.sheBao.grkkxxYaolang" for="field_grkkxxYaolang" [ngbTooltip]="'excelEmailApp.sheBao.help.grkkxxYaolang' | translate">Grkkxx Yaolang</label>
+                    <input type="text" class="form-control" name="grkkxxYaolang" id="field_grkkxxYaolang"
+                           formControlName="grkkxxYaolang"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="excelEmailApp.sheBao.grkkxxShiye" for="field_grkkxxShiye" [ngbTooltip]="'excelEmailApp.sheBao.help.grkkxxShiye' | translate">Grkkxx Shiye</label>
+                    <input type="text" class="form-control" name="grkkxxShiye" id="field_grkkxxShiye"
+                           formControlName="grkkxxShiye"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="excelEmailApp.sheBao.grkkxxYiliao" for="field_grkkxxYiliao" [ngbTooltip]="'excelEmailApp.sheBao.help.grkkxxYiliao' | translate">Grkkxx Yiliao</label>
+                    <input type="text" class="form-control" name="grkkxxYiliao" id="field_grkkxxYiliao"
+                           formControlName="grkkxxYiliao"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="excelEmailApp.sheBao.grkkxxTotal" for="field_grkkxxTotal" [ngbTooltip]="'excelEmailApp.sheBao.help.grkkxxTotal' | translate">Grkkxx Total</label>
+                    <input type="text" class="form-control" name="grkkxxTotal" id="field_grkkxxTotal"
+                           formControlName="grkkxxTotal"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="excelEmailApp.sheBao.dwbfYaolao" for="field_dwbfYaolao" [ngbTooltip]="'excelEmailApp.sheBao.help.dwbfYaolao' | translate">Dwbf Yaolao</label>
+                    <input type="text" class="form-control" name="dwbfYaolao" id="field_dwbfYaolao"
+                           formControlName="dwbfYaolao"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="excelEmailApp.sheBao.dwbfShiye" for="field_dwbfShiye" [ngbTooltip]="'excelEmailApp.sheBao.help.dwbfShiye' | translate">Dwbf Shiye</label>
+                    <input type="text" class="form-control" name="dwbfShiye" id="field_dwbfShiye"
+                           formControlName="dwbfShiye"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="excelEmailApp.sheBao.dwbfYiliao" for="field_dwbfYiliao" [ngbTooltip]="'excelEmailApp.sheBao.help.dwbfYiliao' | translate">Dwbf Yiliao</label>
+                    <input type="text" class="form-control" name="dwbfYiliao" id="field_dwbfYiliao"
+                           formControlName="dwbfYiliao"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="excelEmailApp.sheBao.dwbfGongshang" for="field_dwbfGongshang" [ngbTooltip]="'excelEmailApp.sheBao.help.dwbfGongshang' | translate">Dwbf Gongshang</label>
+                    <input type="text" class="form-control" name="dwbfGongshang" id="field_dwbfGongshang"
+                           formControlName="dwbfGongshang"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="excelEmailApp.sheBao.dwbfShengyu" for="field_dwbfShengyu" [ngbTooltip]="'excelEmailApp.sheBao.help.dwbfShengyu' | translate">Dwbf Shengyu</label>
+                    <input type="text" class="form-control" name="dwbfShengyu" id="field_dwbfShengyu"
+                           formControlName="dwbfShengyu"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="excelEmailApp.sheBao.dwbfTotal" for="field_dwbfTotal" [ngbTooltip]="'excelEmailApp.sheBao.help.dwbfTotal' | translate">Dwbf Total</label>
+                    <input type="text" class="form-control" name="dwbfTotal" id="field_dwbfTotal"
+                           formControlName="dwbfTotal"/>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

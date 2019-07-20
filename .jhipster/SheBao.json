@@ -1,0 +1,92 @@
+{
+    "name": "SheBao",
+    "fields": [
+        {
+            "fieldName": "xh",
+            "javadoc": "北控三兴员工社会保险基数确认单_序号",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "dept",
+            "javadoc": "所属部门",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "name",
+            "javadoc": "姓名",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "sbjsYanglaoShiye",
+            "javadoc": "社保基数_养/失",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "sbjsYiShangSheng",
+            "javadoc": "医/伤/生",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "grkkxxYaolang",
+            "javadoc": "个人部分缴纳及扣款明细（元/月）_养老",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "grkkxxShiye",
+            "javadoc": "失业",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "grkkxxYiliao",
+            "javadoc": "医疗",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "grkkxxTotal",
+            "javadoc": "个人合计",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dwbfYaolao",
+            "javadoc": "单位部分缴纳及扣款明细（元/月）_养老",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dwbfShiye",
+            "javadoc": "失业",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dwbfYiliao",
+            "javadoc": "医疗",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dwbfGongshang",
+            "javadoc": "工伤",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dwbfShengyu",
+            "javadoc": "生育",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dwbfTotal",
+            "javadoc": "单位合计",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20190720045147",
+    "javadoc": "The SheBao entity.\n@author ylf",
+    "entityTableName": "she_bao",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "enableEntityAudit": true
+}

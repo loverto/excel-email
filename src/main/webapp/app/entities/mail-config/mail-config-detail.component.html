@@ -1,0 +1,47 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="mailConfig">
+            <h2><span jhiTranslate="excelEmailApp.mailConfig.detail.title">Mail Config</span> {{mailConfig.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="excelEmailApp.mailConfig.username" [ngbTooltip]="'excelEmailApp.mailConfig.help.username' | translate">Username</span></dt>
+                <dd>
+                    <span>{{mailConfig.username}}</span>
+                </dd>
+                <dt><span jhiTranslate="excelEmailApp.mailConfig.password" [ngbTooltip]="'excelEmailApp.mailConfig.help.password' | translate">Password</span></dt>
+                <dd>
+                    <span>{{mailConfig.password}}</span>
+                </dd>
+                <dt><span jhiTranslate="excelEmailApp.mailConfig.smtpServer" [ngbTooltip]="'excelEmailApp.mailConfig.help.smtpServer' | translate">Smtp Server</span></dt>
+                <dd>
+                    <span>{{mailConfig.smtpServer}}</span>
+                </dd>
+                <dt><span jhiTranslate="excelEmailApp.mailConfig.smtpPort" [ngbTooltip]="'excelEmailApp.mailConfig.help.smtpPort' | translate">Smtp Port</span></dt>
+                <dd>
+                    <span>{{mailConfig.smtpPort}}</span>
+                </dd>
+                <dt><span jhiTranslate="excelEmailApp.mailConfig.typeId" [ngbTooltip]="'excelEmailApp.mailConfig.help.typeId' | translate">Type Id</span></dt>
+                <dd>
+                    <span>{{mailConfig.typeId}}</span>
+                </dd>
+                <dt><span jhiTranslate="excelEmailApp.mailConfig.mailType" [ngbTooltip]="'excelEmailApp.mailConfig.help.mailType' | translate">Mail Type</span></dt>
+                <dd>
+                    <span>{{mailConfig.mailType}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/mail-config', mailConfig.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

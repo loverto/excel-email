@@ -1,0 +1,124 @@
+/**
+ * The Gongjijin entity.
+ * @author ylf
+ */
+entity Gongjijin {
+    /**序号*/
+      xh String,
+
+    /**所属部门*/
+      dept String,
+
+    /**姓名*/
+      name String,
+
+    /**公积金基数*/
+      gjjjs String,
+
+    /**个人部分缴纳及扣款明细（元/月）*/
+      grkkmx String,
+
+    /**单位部分缴纳及扣款明细（元/月）*/
+      dwkkmx String,
+
+    /**合计"*/
+      total String
+}
+
+/**
+ * The UserInfo entity.
+ * @author ylf
+ */
+entity UserInfo {
+    /** 姓名 */
+    name String,
+    /** 内网邮箱 */
+    mail String,
+    /** 外网邮箱 */
+    internetMail String,
+    /** 微信号 */
+    weiXin String,
+    /** QQ号 */
+    qq String,
+    /** 手机号 */
+    phone String
+}
+
+/**
+ * The MailConfig entity.
+ * @author ylf
+ */
+entity MailConfig {
+    /** 邮件用户名 */
+    username String ,
+    /** 邮件密码 */
+    password String ,
+    /** smtp服务器ip */
+    smtpServer String ,
+    /** smtp服务器端口 */
+    smtpPort Integer ,
+    /** 类型 */
+    typeId String ,
+    /** 邮件类型 */
+    mailType String 
+}
+
+/**
+ * The SheBao entity.
+ * @author ylf
+ */
+entity SheBao {
+    /** 北控三兴员工社会保险基数确认单_序号 */
+    xh Integer,
+
+    /** 所属部门 */
+    dept String,
+
+
+    /** 姓名 */
+    name String,
+
+
+    /** 社保基数_养/失 */
+    sbjsYanglaoShiye String,
+
+
+    /** 医/伤/生 */
+    sbjsYiShangSheng String,
+
+    /** 个人部分缴纳及扣款明细（元/月）_养老 */
+    grkkxxYaolang String,
+
+    /** 失业 */
+    grkkxxShiye String,
+
+    /** 医疗 */
+    grkkxxYiliao String,
+
+    /** 个人合计 */
+    grkkxxTotal String,
+
+
+    /** 单位部分缴纳及扣款明细（元/月）_养老 */
+    dwbfYaolao String,
+
+    /** 失业 */
+    dwbfShiye String,
+
+    /** 医疗 */
+    dwbfYiliao String,
+
+
+    /** 工伤 */
+    dwbfGongshang String,
+
+
+    /** 生育 */
+    dwbfShengyu String,
+
+
+    /** 单位合计 */
+    dwbfTotal String
+}
+
+paginate * with pagination

@@ -1,0 +1,51 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="gongjijin">
+            <h2><span jhiTranslate="excelEmailApp.gongjijin.detail.title">Gongjijin</span> {{gongjijin.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="excelEmailApp.gongjijin.xh" [ngbTooltip]="'excelEmailApp.gongjijin.help.xh' | translate">Xh</span></dt>
+                <dd>
+                    <span>{{gongjijin.xh}}</span>
+                </dd>
+                <dt><span jhiTranslate="excelEmailApp.gongjijin.dept" [ngbTooltip]="'excelEmailApp.gongjijin.help.dept' | translate">Dept</span></dt>
+                <dd>
+                    <span>{{gongjijin.dept}}</span>
+                </dd>
+                <dt><span jhiTranslate="excelEmailApp.gongjijin.name" [ngbTooltip]="'excelEmailApp.gongjijin.help.name' | translate">Name</span></dt>
+                <dd>
+                    <span>{{gongjijin.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="excelEmailApp.gongjijin.gjjjs" [ngbTooltip]="'excelEmailApp.gongjijin.help.gjjjs' | translate">Gjjjs</span></dt>
+                <dd>
+                    <span>{{gongjijin.gjjjs}}</span>
+                </dd>
+                <dt><span jhiTranslate="excelEmailApp.gongjijin.grkkmx" [ngbTooltip]="'excelEmailApp.gongjijin.help.grkkmx' | translate">Grkkmx</span></dt>
+                <dd>
+                    <span>{{gongjijin.grkkmx}}</span>
+                </dd>
+                <dt><span jhiTranslate="excelEmailApp.gongjijin.dwkkmx" [ngbTooltip]="'excelEmailApp.gongjijin.help.dwkkmx' | translate">Dwkkmx</span></dt>
+                <dd>
+                    <span>{{gongjijin.dwkkmx}}</span>
+                </dd>
+                <dt><span jhiTranslate="excelEmailApp.gongjijin.total" [ngbTooltip]="'excelEmailApp.gongjijin.help.total' | translate">Total</span></dt>
+                <dd>
+                    <span>{{gongjijin.total}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/gongjijin', gongjijin.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

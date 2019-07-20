@@ -1,0 +1,54 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-user-info-heading" jhiTranslate="excelEmailApp.userInfo.home.createOrEditLabel">Create or edit a User Info</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="excelEmailApp.userInfo.name" for="field_name" [ngbTooltip]="'excelEmailApp.userInfo.help.name' | translate">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                           formControlName="name"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="excelEmailApp.userInfo.mail" for="field_mail" [ngbTooltip]="'excelEmailApp.userInfo.help.mail' | translate">Mail</label>
+                    <input type="text" class="form-control" name="mail" id="field_mail"
+                           formControlName="mail"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="excelEmailApp.userInfo.internetMail" for="field_internetMail" [ngbTooltip]="'excelEmailApp.userInfo.help.internetMail' | translate">Internet Mail</label>
+                    <input type="text" class="form-control" name="internetMail" id="field_internetMail"
+                           formControlName="internetMail"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="excelEmailApp.userInfo.weiXin" for="field_weiXin" [ngbTooltip]="'excelEmailApp.userInfo.help.weiXin' | translate">Wei Xin</label>
+                    <input type="text" class="form-control" name="weiXin" id="field_weiXin"
+                           formControlName="weiXin"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="excelEmailApp.userInfo.qq" for="field_qq" [ngbTooltip]="'excelEmailApp.userInfo.help.qq' | translate">Qq</label>
+                    <input type="text" class="form-control" name="qq" id="field_qq"
+                           formControlName="qq"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="excelEmailApp.userInfo.phone" for="field_phone" [ngbTooltip]="'excelEmailApp.userInfo.help.phone' | translate">Phone</label>
+                    <input type="text" class="form-control" name="phone" id="field_phone"
+                           formControlName="phone"/>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

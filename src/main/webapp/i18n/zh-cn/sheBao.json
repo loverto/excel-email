@@ -1,0 +1,53 @@
+{
+  "excelEmailApp": {
+    "sheBao": {
+      "home": {
+        "title": "She Baos",
+        "createLabel": "创建新 She Bao",
+        "createOrEditLabel": "创建或编辑 She Bao",
+        "notFound": "No She Bao found"
+      },
+      "created": "She Bao {{ param }} 创建成功",
+      "updated": "She Bao {{ param }} 更新成功",
+      "deleted": "She Bao {{ param }} 删除成功",
+      "delete": {
+        "question": "你确定要删除 She Bao {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "She Bao"
+      },
+      "xh": "Xh",
+      "dept": "Dept",
+      "name": "Name",
+      "sbjsYanglaoShiye": "Sbjs Yanglao Shiye",
+      "sbjsYiShangSheng": "Sbjs Yi Shang Sheng",
+      "grkkxxYaolang": "Grkkxx Yaolang",
+      "grkkxxShiye": "Grkkxx Shiye",
+      "grkkxxYiliao": "Grkkxx Yiliao",
+      "grkkxxTotal": "Grkkxx Total",
+      "dwbfYaolao": "Dwbf Yaolao",
+      "dwbfShiye": "Dwbf Shiye",
+      "dwbfYiliao": "Dwbf Yiliao",
+      "dwbfGongshang": "Dwbf Gongshang",
+      "dwbfShengyu": "Dwbf Shengyu",
+      "dwbfTotal": "Dwbf Total",
+      "help": {
+        "xh": "北控三兴员工社会保险基数确认单_序号",
+        "dept": "所属部门",
+        "name": "姓名",
+        "sbjsYanglaoShiye": "社保基数_养/失",
+        "sbjsYiShangSheng": "医/伤/生",
+        "grkkxxYaolang": "个人部分缴纳及扣款明细（元/月）_养老",
+        "grkkxxShiye": "失业",
+        "grkkxxYiliao": "医疗",
+        "grkkxxTotal": "个人合计",
+        "dwbfYaolao": "单位部分缴纳及扣款明细（元/月）_养老",
+        "dwbfShiye": "失业",
+        "dwbfYiliao": "医疗",
+        "dwbfGongshang": "工伤",
+        "dwbfShengyu": "生育",
+        "dwbfTotal": "单位合计"
+      }
+    }
+  }
+}

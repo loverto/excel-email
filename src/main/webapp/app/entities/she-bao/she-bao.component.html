@@ -1,0 +1,93 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="excelEmailApp.sheBao.home.title">She Baos</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-she-bao" [routerLink]="['/she-bao/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="excelEmailApp.sheBao.home.createLabel">
+            Create new She Bao
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="sheBaos?.length === 0">
+        <span jhiTranslate="excelEmailApp.sheBao.home.notFound">No sheBaos found</span>
+    </div>
+    <div class="table-responsive" *ngIf="sheBaos?.length > 0">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="xh"><span jhiTranslate="excelEmailApp.sheBao.xh">Xh</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="dept"><span jhiTranslate="excelEmailApp.sheBao.dept">Dept</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="name"><span jhiTranslate="excelEmailApp.sheBao.name">Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="sbjsYanglaoShiye"><span jhiTranslate="excelEmailApp.sheBao.sbjsYanglaoShiye">Sbjs Yanglao Shiye</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="sbjsYiShangSheng"><span jhiTranslate="excelEmailApp.sheBao.sbjsYiShangSheng">Sbjs Yi Shang Sheng</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="grkkxxYaolang"><span jhiTranslate="excelEmailApp.sheBao.grkkxxYaolang">Grkkxx Yaolang</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="grkkxxShiye"><span jhiTranslate="excelEmailApp.sheBao.grkkxxShiye">Grkkxx Shiye</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="grkkxxYiliao"><span jhiTranslate="excelEmailApp.sheBao.grkkxxYiliao">Grkkxx Yiliao</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="grkkxxTotal"><span jhiTranslate="excelEmailApp.sheBao.grkkxxTotal">Grkkxx Total</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="dwbfYaolao"><span jhiTranslate="excelEmailApp.sheBao.dwbfYaolao">Dwbf Yaolao</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="dwbfShiye"><span jhiTranslate="excelEmailApp.sheBao.dwbfShiye">Dwbf Shiye</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="dwbfYiliao"><span jhiTranslate="excelEmailApp.sheBao.dwbfYiliao">Dwbf Yiliao</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="dwbfGongshang"><span jhiTranslate="excelEmailApp.sheBao.dwbfGongshang">Dwbf Gongshang</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="dwbfShengyu"><span jhiTranslate="excelEmailApp.sheBao.dwbfShengyu">Dwbf Shengyu</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="dwbfTotal"><span jhiTranslate="excelEmailApp.sheBao.dwbfTotal">Dwbf Total</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let sheBao of sheBaos ;trackBy: trackId">
+                <td><a [routerLink]="['/she-bao', sheBao.id, 'view' ]">{{sheBao.id}}</a></td>
+                <td>{{sheBao.xh}}</td>
+                <td>{{sheBao.dept}}</td>
+                <td>{{sheBao.name}}</td>
+                <td>{{sheBao.sbjsYanglaoShiye}}</td>
+                <td>{{sheBao.sbjsYiShangSheng}}</td>
+                <td>{{sheBao.grkkxxYaolang}}</td>
+                <td>{{sheBao.grkkxxShiye}}</td>
+                <td>{{sheBao.grkkxxYiliao}}</td>
+                <td>{{sheBao.grkkxxTotal}}</td>
+                <td>{{sheBao.dwbfYaolao}}</td>
+                <td>{{sheBao.dwbfShiye}}</td>
+                <td>{{sheBao.dwbfYiliao}}</td>
+                <td>{{sheBao.dwbfGongshang}}</td>
+                <td>{{sheBao.dwbfShengyu}}</td>
+                <td>{{sheBao.dwbfTotal}}</td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/she-bao', sheBao.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/she-bao', sheBao.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'she-bao', { outlets: { popup: sheBao.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div [hidden]="sheBaos?.length === 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,59 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-gongjijin-heading" jhiTranslate="excelEmailApp.gongjijin.home.createOrEditLabel">Create or edit a Gongjijin</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="excelEmailApp.gongjijin.xh" for="field_xh" [ngbTooltip]="'excelEmailApp.gongjijin.help.xh' | translate">Xh</label>
+                    <input type="text" class="form-control" name="xh" id="field_xh"
+                           formControlName="xh"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="excelEmailApp.gongjijin.dept" for="field_dept" [ngbTooltip]="'excelEmailApp.gongjijin.help.dept' | translate">Dept</label>
+                    <input type="text" class="form-control" name="dept" id="field_dept"
+                           formControlName="dept"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="excelEmailApp.gongjijin.name" for="field_name" [ngbTooltip]="'excelEmailApp.gongjijin.help.name' | translate">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                           formControlName="name"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="excelEmailApp.gongjijin.gjjjs" for="field_gjjjs" [ngbTooltip]="'excelEmailApp.gongjijin.help.gjjjs' | translate">Gjjjs</label>
+                    <input type="text" class="form-control" name="gjjjs" id="field_gjjjs"
+                           formControlName="gjjjs"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="excelEmailApp.gongjijin.grkkmx" for="field_grkkmx" [ngbTooltip]="'excelEmailApp.gongjijin.help.grkkmx' | translate">Grkkmx</label>
+                    <input type="text" class="form-control" name="grkkmx" id="field_grkkmx"
+                           formControlName="grkkmx"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="excelEmailApp.gongjijin.dwkkmx" for="field_dwkkmx" [ngbTooltip]="'excelEmailApp.gongjijin.help.dwkkmx' | translate">Dwkkmx</label>
+                    <input type="text" class="form-control" name="dwkkmx" id="field_dwkkmx"
+                           formControlName="dwkkmx"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="excelEmailApp.gongjijin.total" for="field_total" [ngbTooltip]="'excelEmailApp.gongjijin.help.total' | translate">Total</label>
+                    <input type="text" class="form-control" name="total" id="field_total"
+                           formControlName="total"/>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+{
+  "excelEmailApp": {
+    "gongjijin": {
+      "home": {
+        "title": "Gongjijins",
+        "createLabel": "创建新 Gongjijin",
+        "createOrEditLabel": "创建或编辑 Gongjijin",
+        "notFound": "No Gongjijin found"
+      },
+      "created": "Gongjijin {{ param }} 创建成功",
+      "updated": "Gongjijin {{ param }} 更新成功",
+      "deleted": "Gongjijin {{ param }} 删除成功",
+      "delete": {
+        "question": "你确定要删除 Gongjijin {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "Gongjijin"
+      },
+      "xh": "Xh",
+      "dept": "Dept",
+      "name": "Name",
+      "gjjjs": "Gjjjs",
+      "grkkmx": "Grkkmx",
+      "dwkkmx": "Dwkkmx",
+      "total": "Total",
+      "help": {
+        "xh": "序号",
+        "dept": "所属部门",
+        "name": "姓名",
+        "gjjjs": "公积金基数",
+        "grkkmx": "个人部分缴纳及扣款明细（元/月）",
+        "dwkkmx": "单位部分缴纳及扣款明细（元/月）",
+        "total": "合计&#34;"
+      }
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+    "name": "UserInfo",
+    "fields": [
+        {
+            "fieldName": "name",
+            "javadoc": "姓名",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "mail",
+            "javadoc": "内网邮箱",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "internetMail",
+            "javadoc": "外网邮箱",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "weiXin",
+            "javadoc": "微信号",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "qq",
+            "javadoc": "QQ号",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "phone",
+            "javadoc": "手机号",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20190720045145",
+    "javadoc": "The UserInfo entity.\n@author ylf",
+    "entityTableName": "user_info",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "enableEntityAudit": true
+}

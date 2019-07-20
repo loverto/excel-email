@@ -1,0 +1,52 @@
+{
+    "name": "Gongjijin",
+    "fields": [
+        {
+            "fieldName": "xh",
+            "javadoc": "序号",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dept",
+            "javadoc": "所属部门",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "name",
+            "javadoc": "姓名",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "gjjjs",
+            "javadoc": "公积金基数",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "grkkmx",
+            "javadoc": "个人部分缴纳及扣款明细（元/月）",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dwkkmx",
+            "javadoc": "单位部分缴纳及扣款明细（元/月）",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "total",
+            "javadoc": "合计\"",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20190720045144",
+    "javadoc": "The Gongjijin entity.\n@author ylf",
+    "entityTableName": "gongjijin",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "enableEntityAudit": true
+}
