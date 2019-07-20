@@ -1,0 +1,43 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "org.ylf",
+      "nativeLanguage": "zh-cn"
+    },
+    "jhipsterVersion": "6.1.2",
+    "applicationType": "monolith",
+    "baseName": "excelEmail",
+    "packageName": "org.ylf",
+    "packageFolder": "org/ylf",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "infinispan",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "gradle",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "ZWY1ZmIyYjMyMmIyNmFkYjdmMTRiODZmN2VmZDU5YTBkMGI0NjcyNWM1OWMwMmVmY2VhOTg4ZDY0Mzc5OGFhYWY0YzAwN2Q0OWU1OWU3YmRjYWU3YTcwZjI0NzQwODMyYjJiYzIxOGZkOGY0ODUxYTk4MmJlZTVlYjlhMDYxNDk=",
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "none",
+    "clientThemeVariant": "",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": true,
+    "nativeLanguage": "zh-cn",
+    "languages": [
+      "zh-cn",
+      "en"
+    ]
+  }
+}
