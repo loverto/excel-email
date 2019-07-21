@@ -15,6 +15,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -114,7 +115,7 @@ public class WuxianyijinResource {
         }
     }
 
-
+    @Async
     private void sendMail(String outDataPath,String templateUrl,String from,String mailSubject,String mailContent) throws InterruptedException {
         List<UserInfo> mailBeans = userInfoRepository.findAll();
 
@@ -125,7 +126,7 @@ public class WuxianyijinResource {
         String [] s = {"1045438139@qq.com"};
         String subject = mailSubject;
         String content = mailContent;
-        boolean isHtml = false;
+        boolean isHtml = true;
         String fileName = "A";
 
         long sleep = 5;
