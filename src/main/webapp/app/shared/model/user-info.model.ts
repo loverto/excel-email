@@ -6,6 +6,7 @@ export interface IUserInfo {
   weiXin?: string;
   qq?: string;
   phone?: string;
+  idCard?: string;
 }
 
 export class UserInfo implements IUserInfo {
@@ -16,6 +17,7 @@ export class UserInfo implements IUserInfo {
     public internetMail?: string,
     public weiXin?: string,
     public qq?: string,
-    public phone?: string
+    public phone?: string,
+    public idCard?: string
   ) {}
 }

@@ -41,7 +41,9 @@ entity UserInfo {
     /** QQ号 */
     qq String,
     /** 手机号 */
-    phone String
+    phone String,
+    /** 身份证号 */
+    idCard String
 }
 
 /**
@@ -120,5 +122,18 @@ entity SheBao {
     /** 单位合计 */
     dwbfTotal String
 }
+
+/**
+ * The MailContent entity.
+ * @author ylf
+ */
+entity MailContent {
+  /** 邮件主题 */
+  mailSubject String,
+  /** 邮件内容 */
+  mailContent String
+}
+
+
 
 paginate * with pagination

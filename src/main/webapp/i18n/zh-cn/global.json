@@ -11,6 +11,11 @@
         "userInfo": "用户信息",
         "mailConfig": "邮箱信息",
         "sheBao": "社保",
+        "gongjijin": "Gongjijin",
+        "userInfo": "User Info",
+        "mailConfig": "Mail Config",
+        "sheBao": "She Bao",
+        "mailContent": "Mail Content",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

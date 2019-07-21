@@ -1,0 +1,27 @@
+{
+  "excelEmailApp": {
+    "mailContent": {
+      "home": {
+        "title": "Mail Contents",
+        "createLabel": "Create a new Mail Content",
+        "createOrEditLabel": "Create or edit a Mail Content",
+        "notFound": "No Mail Content found"
+      },
+      "created": "A new Mail Content is created with identifier {{ param }}",
+      "updated": "A Mail Content is updated with identifier {{ param }}",
+      "deleted": "A Mail Content is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Mail Content {{ id }}?"
+      },
+      "detail": {
+        "title": "Mail Content"
+      },
+      "mailSubject": "Mail Subject",
+      "mailContent": "Mail Content",
+      "help": {
+        "mailSubject": "邮件主题",
+        "mailContent": "邮件内容"
+      }
+    }
+  }
+}

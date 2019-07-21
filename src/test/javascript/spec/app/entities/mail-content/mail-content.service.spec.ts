@@ -4,15 +4,15 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { of } from 'rxjs';
 import { take, map } from 'rxjs/operators';
-import { UserInfoService } from 'app/entities/user-info/user-info.service';
-import { IUserInfo, UserInfo } from 'app/shared/model/user-info.model';
+import { MailContentService } from 'app/entities/mail-content/mail-content.service';
+import { IMailContent, MailContent } from 'app/shared/model/mail-content.model';
 
 describe('Service Tests', () => {
-  describe('UserInfo Service', () => {
+  describe('MailContent Service', () => {
     let injector: TestBed;
-    let service: UserInfoService;
+    let service: MailContentService;
     let httpMock: HttpTestingController;
-    let elemDefault: IUserInfo;
+    let elemDefault: IMailContent;
     let expectedResult;
     beforeEach(() => {
       TestBed.configureTestingModule({
@@ -20,10 +20,10 @@ describe('Service Tests', () => {
       });
       expectedResult = {};
       injector = getTestBed();
-      service = injector.get(UserInfoService);
+      service = injector.get(MailContentService);
       httpMock = injector.get(HttpTestingController);
 
-      elemDefault = new UserInfo(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA');
+      elemDefault = new MailContent(0, 'AAAAAAA', 'AAAAAAA');
     });
 
     describe('Service methods', () => {
@@ -39,7 +39,7 @@ describe('Service Tests', () => {
         expect(expectedResult).toMatchObject({ body: elemDefault });
       });
 
-      it('should create a UserInfo', async () => {
+      it('should create a MailContent', async () => {
         const returnedFromService = Object.assign(
           {
             id: 0
@@ -48,7 +48,7 @@ describe('Service Tests', () => {
         );
         const expected = Object.assign({}, returnedFromService);
         service
-          .create(new UserInfo(null))
+          .create(new MailContent(null))
           .pipe(take(1))
           .subscribe(resp => (expectedResult = resp));
         const req = httpMock.expectOne({ method: 'POST' });
@@ -56,16 +56,11 @@ describe('Service Tests', () => {
         expect(expectedResult).toMatchObject({ body: expected });
       });
 
-      it('should update a UserInfo', async () => {
+      it('should update a MailContent', async () => {
         const returnedFromService = Object.assign(
           {
-            name: 'BBBBBB',
-            mail: 'BBBBBB',
-            internetMail: 'BBBBBB',
-            weiXin: 'BBBBBB',
-            qq: 'BBBBBB',
-            phone: 'BBBBBB',
-            idCard: 'BBBBBB'
+            mailSubject: 'BBBBBB',
+            mailContent: 'BBBBBB'
           },
           elemDefault
         );
@@ -80,16 +75,11 @@ describe('Service Tests', () => {
         expect(expectedResult).toMatchObject({ body: expected });
       });
 
-      it('should return a list of UserInfo', async () => {
+      it('should return a list of MailContent', async () => {
         const returnedFromService = Object.assign(
           {
-            name: 'BBBBBB',
-            mail: 'BBBBBB',
-            internetMail: 'BBBBBB',
-            weiXin: 'BBBBBB',
-            qq: 'BBBBBB',
-            phone: 'BBBBBB',
-            idCard: 'BBBBBB'
+            mailSubject: 'BBBBBB',
+            mailContent: 'BBBBBB'
           },
           elemDefault
         );
@@ -107,7 +97,7 @@ describe('Service Tests', () => {
         expect(expectedResult).toContainEqual(expected);
       });
 
-      it('should delete a UserInfo', async () => {
+      it('should delete a MailContent', async () => {
         const rxPromise = service.delete(123).subscribe(resp => (expectedResult = resp.ok));
 
         const req = httpMock.expectOne({ method: 'DELETE' });

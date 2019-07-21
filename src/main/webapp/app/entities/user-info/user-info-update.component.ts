@@ -20,7 +20,8 @@ export class UserInfoUpdateComponent implements OnInit {
     internetMail: [],
     weiXin: [],
     qq: [],
-    phone: []
+    phone: [],
+    idCard: []
   });
 
   constructor(protected userInfoService: UserInfoService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
@@ -40,7 +41,8 @@ export class UserInfoUpdateComponent implements OnInit {
       internetMail: userInfo.internetMail,
       weiXin: userInfo.weiXin,
       qq: userInfo.qq,
-      phone: userInfo.phone
+      phone: userInfo.phone,
+      idCard: userInfo.idCard
     });
   }
 
@@ -67,7 +69,8 @@ export class UserInfoUpdateComponent implements OnInit {
       internetMail: this.editForm.get(['internetMail']).value,
       weiXin: this.editForm.get(['weiXin']).value,
       qq: this.editForm.get(['qq']).value,
-      phone: this.editForm.get(['phone']).value
+      phone: this.editForm.get(['phone']).value,
+      idCard: this.editForm.get(['idCard']).value
     };
   }
 

@@ -66,6 +66,13 @@ public class UserInfo extends AbstractAuditingEntity implements Serializable {
     @Column(name = "phone")
     private String phone;
 
+    /**
+     * 身份证号
+     */
+    @ApiModelProperty(value = "身份证号")
+    @Column(name = "id_card")
+    private String idCard;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -152,6 +159,19 @@ public class UserInfo extends AbstractAuditingEntity implements Serializable {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
+    public String getIdCard() {
+        return idCard;
+    }
+
+    public UserInfo idCard(String idCard) {
+        this.idCard = idCard;
+        return this;
+    }
+
+    public void setIdCard(String idCard) {
+        this.idCard = idCard;
+    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
@@ -180,6 +200,7 @@ public class UserInfo extends AbstractAuditingEntity implements Serializable {
             ", weiXin='" + getWeiXin() + "'" +
             ", qq='" + getQq() + "'" +
             ", phone='" + getPhone() + "'" +
+            ", idCard='" + getIdCard() + "'" +
             "}";
     }
 }

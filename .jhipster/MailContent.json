@@ -1,0 +1,26 @@
+{
+    "name": "MailContent",
+    "fields": [
+        {
+            "fieldName": "mailSubject",
+            "javadoc": "邮件主题",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "mailContent",
+            "javadoc": "邮件内容",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20190721020542",
+    "javadoc": "The MailContent entity.\n@author ylf",
+    "entityTableName": "mail_content",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

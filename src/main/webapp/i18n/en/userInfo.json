@@ -22,13 +22,15 @@
       "weiXin": "Wei Xin",
       "qq": "Qq",
       "phone": "Phone",
+      "idCard": "Id Card",
       "help": {
         "name": "姓名",
         "mail": "内网邮箱",
         "internetMail": "外网邮箱",
         "weiXin": "微信号",
         "qq": "QQ号",
-        "phone": "手机号"
+        "phone": "手机号",
+        "idCard": "身份证号"
       }
     }
   }

@@ -19,6 +19,10 @@ import { RouterModule } from '@angular/router';
       {
         path: 'she-bao',
         loadChildren: './she-bao/she-bao.module#ExcelEmailSheBaoModule'
+      },
+      {
+        path: 'mail-content',
+        loadChildren: './mail-content/mail-content.module#ExcelEmailMailContentModule'
       }
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ])

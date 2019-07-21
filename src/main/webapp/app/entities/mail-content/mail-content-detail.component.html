@@ -1,0 +1,31 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="mailContent">
+            <h2><span jhiTranslate="excelEmailApp.mailContent.detail.title">Mail Content</span> {{mailContent.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="excelEmailApp.mailContent.mailSubject" [ngbTooltip]="'excelEmailApp.mailContent.help.mailSubject' | translate">Mail Subject</span></dt>
+                <dd>
+                    <span>{{mailContent.mailSubject}}</span>
+                </dd>
+                <dt><span jhiTranslate="excelEmailApp.mailContent.mailContent" [ngbTooltip]="'excelEmailApp.mailContent.help.mailContent' | translate">Mail Content</span></dt>
+                <dd>
+                    <span>{{mailContent.mailContent}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/mail-content', mailContent.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -30,10 +30,15 @@
             "fieldName": "phone",
             "javadoc": "手机号",
             "fieldType": "String"
+        },
+        {
+            "fieldName": "idCard",
+            "javadoc": "身份证号",
+            "fieldType": "String"
         }
     ],
     "relationships": [],
-    "changelogDate": "20190720095531",
+    "changelogDate": "20190721073639",
     "javadoc": "The UserInfo entity.\n@author ylf",
     "entityTableName": "user_info",
     "dto": "no",

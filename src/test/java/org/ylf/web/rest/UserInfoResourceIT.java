@@ -51,6 +51,9 @@ public class UserInfoResourceIT {
     private static final String DEFAULT_PHONE = "AAAAAAAAAA";
     private static final String UPDATED_PHONE = "BBBBBBBBBB";
 
+    private static final String DEFAULT_ID_CARD = "AAAAAAAAAA";
+    private static final String UPDATED_ID_CARD = "BBBBBBBBBB";
+
     @Autowired
     private UserInfoRepository userInfoRepository;
 
@@ -98,7 +101,8 @@ public class UserInfoResourceIT {
             .internetMail(DEFAULT_INTERNET_MAIL)
             .weiXin(DEFAULT_WEI_XIN)
             .qq(DEFAULT_QQ)
-            .phone(DEFAULT_PHONE);
+            .phone(DEFAULT_PHONE)
+            .idCard(DEFAULT_ID_CARD);
         return userInfo;
     }
     /**
@@ -114,7 +118,8 @@ public class UserInfoResourceIT {
             .internetMail(UPDATED_INTERNET_MAIL)
             .weiXin(UPDATED_WEI_XIN)
             .qq(UPDATED_QQ)
-            .phone(UPDATED_PHONE);
+            .phone(UPDATED_PHONE)
+            .idCard(UPDATED_ID_CARD);
         return userInfo;
     }
 
@@ -144,6 +149,7 @@ public class UserInfoResourceIT {
         assertThat(testUserInfo.getWeiXin()).isEqualTo(DEFAULT_WEI_XIN);
         assertThat(testUserInfo.getQq()).isEqualTo(DEFAULT_QQ);
         assertThat(testUserInfo.getPhone()).isEqualTo(DEFAULT_PHONE);
+        assertThat(testUserInfo.getIdCard()).isEqualTo(DEFAULT_ID_CARD);
     }
 
     @Test
@@ -182,7 +188,8 @@ public class UserInfoResourceIT {
             .andExpect(jsonPath("$.[*].internetMail").value(hasItem(DEFAULT_INTERNET_MAIL.toString())))
             .andExpect(jsonPath("$.[*].weiXin").value(hasItem(DEFAULT_WEI_XIN.toString())))
             .andExpect(jsonPath("$.[*].qq").value(hasItem(DEFAULT_QQ.toString())))
-            .andExpect(jsonPath("$.[*].phone").value(hasItem(DEFAULT_PHONE.toString())));
+            .andExpect(jsonPath("$.[*].phone").value(hasItem(DEFAULT_PHONE.toString())))
+            .andExpect(jsonPath("$.[*].idCard").value(hasItem(DEFAULT_ID_CARD.toString())));
     }
     
     @Test
@@ -201,7 +208,8 @@ public class UserInfoResourceIT {
             .andExpect(jsonPath("$.internetMail").value(DEFAULT_INTERNET_MAIL.toString()))
             .andExpect(jsonPath("$.weiXin").value(DEFAULT_WEI_XIN.toString()))
             .andExpect(jsonPath("$.qq").value(DEFAULT_QQ.toString()))
-            .andExpect(jsonPath("$.phone").value(DEFAULT_PHONE.toString()));
+            .andExpect(jsonPath("$.phone").value(DEFAULT_PHONE.toString()))
+            .andExpect(jsonPath("$.idCard").value(DEFAULT_ID_CARD.toString()));
     }
 
     @Test
@@ -230,7 +238,8 @@ public class UserInfoResourceIT {
             .internetMail(UPDATED_INTERNET_MAIL)
             .weiXin(UPDATED_WEI_XIN)
             .qq(UPDATED_QQ)
-            .phone(UPDATED_PHONE);
+            .phone(UPDATED_PHONE)
+            .idCard(UPDATED_ID_CARD);
 
         restUserInfoMockMvc.perform(put("/api/user-infos")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -247,6 +256,7 @@ public class UserInfoResourceIT {
         assertThat(testUserInfo.getWeiXin()).isEqualTo(UPDATED_WEI_XIN);
         assertThat(testUserInfo.getQq()).isEqualTo(UPDATED_QQ);
         assertThat(testUserInfo.getPhone()).isEqualTo(UPDATED_PHONE);
+        assertThat(testUserInfo.getIdCard()).isEqualTo(UPDATED_ID_CARD);
     }
 
     @Test

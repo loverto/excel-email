@@ -11,6 +11,7 @@
         "userInfo": "User Info",
         "mailConfig": "Mail Config",
         "sheBao": "She Bao",
+        "mailContent": "Mail Content",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

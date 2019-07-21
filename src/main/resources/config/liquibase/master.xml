@@ -19,6 +19,7 @@
     <include file="config/liquibase/changelog/20190720095532_added_entity_MailConfig.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20190720095533_added_entity_SheBao.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20190720101235_added_entity_EntityAuditEvent.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190721020542_added_entity_MailContent.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>
