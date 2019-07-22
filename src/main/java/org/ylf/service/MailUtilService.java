@@ -4,10 +4,12 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
 
@@ -26,8 +28,10 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.ylf.domain.Gongjijin;
 import org.ylf.domain.SheBao;
+import org.ylf.domain.UserInfo;
 import org.ylf.repository.GongjijinRepository;
 import org.ylf.repository.SheBaoRepository;
+import org.ylf.repository.UserInfoRepository;
 
 @Service
 public class MailUtilService{
@@ -38,9 +42,15 @@ public class MailUtilService{
 
     private final SheBaoRepository sheBaoRepository;
 
-    public MailUtilService(GongjijinRepository gongjijinRepository,SheBaoRepository sheBaoRepository){
+    private final UserInfoRepository userInfoRepository;
+    private final JavaMailSender mailSender;
+
+    public MailUtilService(GongjijinRepository gongjijinRepository, SheBaoRepository sheBaoRepository,
+                           UserInfoRepository userInfoRepository,JavaMailSender mailSender){
         this.gongjijinRepository = gongjijinRepository;
         this.sheBaoRepository = sheBaoRepository;
+        this.userInfoRepository = userInfoRepository;
+        this.mailSender = mailSender;
     }
 
 
@@ -55,6 +65,54 @@ public class MailUtilService{
             map.put(fieldName, String.valueOf(value));
         }
         return map;
+    }
+
+    @Async
+    public void sendMail(String outDataPath,String templateUrl,String from,String mailSubject,String mailContent) throws InterruptedException {
+        List<UserInfo> mailBeans = userInfoRepository.findAll();
+
+        splitExcelAndMergeExcel(outDataPath,templateUrl);
+
+        //String deliver = "bksx@bksx.cn";
+        String deliver = from;
+        String [] s = {"1045438139@qq.com"};
+        String subject = mailSubject;
+        String content = mailContent;
+        boolean isHtml = true;
+        String fileName = "A";
+
+        long sleep = 5;
+
+        File dir = new File(outDataPath);
+
+        File[] files = dir.listFiles((f,ff)->{return ff.endsWith(".xlsx");});
+
+        List<File> files1 = Arrays.asList(files);
+        for (int i =0;i<files1.size();i++){
+            File file = files1.get(i);
+
+            String name = file.getName();
+
+            log.info("file name:{}",name);
+
+            String[] split = name.split("\\.");
+            String username = split[0];
+
+            Optional<UserInfo> first = mailBeans.stream().filter(a -> username.equals(a.getName())).findFirst();
+
+            if(first.isPresent()){
+                UserInfo mailBean = first.get();
+                log.info("给 {} 发送邮件", mailBean.getName());
+                s[0] = mailBean.getInternetMail();
+                content = content.replace("{ username }",username);
+                //发送邮件
+                sendAttachmentFileEmail(mailSender,deliver, s, s, subject, content, isHtml, name, file);
+                Thread.sleep(sleep*1000);
+            };
+
+
+
+        }
     }
 
 

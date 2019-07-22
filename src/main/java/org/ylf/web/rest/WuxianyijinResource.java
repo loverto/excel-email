@@ -102,9 +102,7 @@ public class WuxianyijinResource {
             MailContent mc = mailContentOptional.get();
             mailSubject = mc.getMailSubject();
             mailContent = mc.getMailContent();
-
-
-            sendMail(outDataPath,templateUrl+File.separator+templateFilename,from,mailSubject, this.mailContent);
+            mailUtilService.sendMail(outDataPath,templateUrl+File.separator+templateFilename,from,mailSubject, this.mailContent);
             return ResponseEntity.ok("success");
         } catch (IllegalStateException e) {
             e.printStackTrace();
@@ -115,51 +113,4 @@ public class WuxianyijinResource {
         }
     }
 
-    @Async
-    private void sendMail(String outDataPath,String templateUrl,String from,String mailSubject,String mailContent) throws InterruptedException {
-        List<UserInfo> mailBeans = userInfoRepository.findAll();
-
-        mailUtilService.splitExcelAndMergeExcel(outDataPath,templateUrl);
-
-        //String deliver = "bksx@bksx.cn";
-        String deliver = from;
-        String [] s = {"1045438139@qq.com"};
-        String subject = mailSubject;
-        String content = mailContent;
-        boolean isHtml = true;
-        String fileName = "A";
-
-        long sleep = 5;
-
-        File dir = new File(outDataPath);
-
-        File[] files = dir.listFiles((f,ff)->{return ff.endsWith(".xlsx");});
-
-        List<File> files1 = Arrays.asList(files);
-        for (int i =0;i<files1.size();i++){
-            File file = files1.get(i);
-
-            String name = file.getName();
-
-            log.info("file name:{}",name);
-
-            String[] split = name.split("\\.");
-            String username = split[0];
-
-            Optional<UserInfo> first = mailBeans.stream().filter(a -> username.equals(a.getName())).findFirst();
-
-            if(first.isPresent()){
-                UserInfo mailBean = first.get();
-                log.info("给 {} 发送邮件", mailBean.getName());
-                s[0] = mailBean.getInternetMail();
-                content = content.replace("{ username }",username);
-                //发送邮件
-                mailUtilService.sendAttachmentFileEmail(mailSender,deliver, s, s, subject, content, isHtml, name, file);
-                Thread.sleep(sleep*1000);
-            };
-
-
-
-        }
-    }
 }
