@@ -22,6 +22,11 @@
             "fieldType": "String"
         },
         {
+            "fieldName": "sbjsGongShang",
+            "javadoc": "工伤",
+            "fieldType": "String"
+        },
+        {
             "fieldName": "sbjsYiShangSheng",
             "javadoc": "医/伤/生",
             "fieldType": "String"
@@ -78,7 +83,7 @@
         }
     ],
     "relationships": [],
-    "changelogDate": "20190721073641",
+    "changelogDate": "20190724115529",
     "javadoc": "The SheBao entity.\n@author ylf",
     "entityTableName": "she_bao",
     "dto": "no",

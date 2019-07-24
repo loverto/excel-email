@@ -4,6 +4,7 @@ export interface ISheBao {
   dept?: string;
   name?: string;
   sbjsYanglaoShiye?: string;
+  sbjsGongShang?: string;
   sbjsYiShangSheng?: string;
   grkkxxYaolang?: string;
   grkkxxShiye?: string;
@@ -24,6 +25,7 @@ export class SheBao implements ISheBao {
     public dept?: string,
     public name?: string,
     public sbjsYanglaoShiye?: string,
+    public sbjsGongShang?: string,
     public sbjsYiShangSheng?: string,
     public grkkxxYaolang?: string,
     public grkkxxShiye?: string,

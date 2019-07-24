@@ -53,6 +53,13 @@ public class SheBao extends AbstractAuditingEntity implements Serializable {
     private String sbjsYanglaoShiye;
 
     /**
+     * 工伤
+     */
+    @ApiModelProperty(value = "工伤")
+    @Column(name = "sbjs_gong_shang")
+    private String sbjsGongShang;
+
+    /**
      * 医/伤/生
      */
     @ApiModelProperty(value = "医/伤/生")
@@ -188,6 +195,19 @@ public class SheBao extends AbstractAuditingEntity implements Serializable {
 
     public void setSbjsYanglaoShiye(String sbjsYanglaoShiye) {
         this.sbjsYanglaoShiye = sbjsYanglaoShiye;
+    }
+
+    public String getSbjsGongShang() {
+        return sbjsGongShang;
+    }
+
+    public SheBao sbjsGongShang(String sbjsGongShang) {
+        this.sbjsGongShang = sbjsGongShang;
+        return this;
+    }
+
+    public void setSbjsGongShang(String sbjsGongShang) {
+        this.sbjsGongShang = sbjsGongShang;
     }
 
     public String getSbjsYiShangSheng() {
@@ -358,6 +378,7 @@ public class SheBao extends AbstractAuditingEntity implements Serializable {
             ", dept='" + getDept() + "'" +
             ", name='" + getName() + "'" +
             ", sbjsYanglaoShiye='" + getSbjsYanglaoShiye() + "'" +
+            ", sbjsGongShang='" + getSbjsGongShang() + "'" +
             ", sbjsYiShangSheng='" + getSbjsYiShangSheng() + "'" +
             ", grkkxxYaolang='" + getGrkkxxYaolang() + "'" +
             ", grkkxxShiye='" + getGrkkxxShiye() + "'" +

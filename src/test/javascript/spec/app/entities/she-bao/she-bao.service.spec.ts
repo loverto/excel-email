@@ -39,6 +39,7 @@ describe('Service Tests', () => {
         'AAAAAAA',
         'AAAAAAA',
         'AAAAAAA',
+        'AAAAAAA',
         'AAAAAAA'
       );
     });
@@ -80,6 +81,7 @@ describe('Service Tests', () => {
             dept: 'BBBBBB',
             name: 'BBBBBB',
             sbjsYanglaoShiye: 'BBBBBB',
+            sbjsGongShang: 'BBBBBB',
             sbjsYiShangSheng: 'BBBBBB',
             grkkxxYaolang: 'BBBBBB',
             grkkxxShiye: 'BBBBBB',
@@ -112,6 +114,7 @@ describe('Service Tests', () => {
             dept: 'BBBBBB',
             name: 'BBBBBB',
             sbjsYanglaoShiye: 'BBBBBB',
+            sbjsGongShang: 'BBBBBB',
             sbjsYiShangSheng: 'BBBBBB',
             grkkxxYaolang: 'BBBBBB',
             grkkxxShiye: 'BBBBBB',

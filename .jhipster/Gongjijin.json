@@ -38,7 +38,7 @@
         }
     ],
     "relationships": [],
-    "changelogDate": "20190721073638",
+    "changelogDate": "20190724115526",
     "javadoc": "The Gongjijin entity.\n@author ylf",
     "entityTableName": "gongjijin",
     "dto": "no",

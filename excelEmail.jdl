@@ -84,7 +84,8 @@ entity SheBao {
     /** 社保基数_养/失 */
     sbjsYanglaoShiye String,
 
-
+    /** 工伤 */
+    sbjsGongShang String,
     /** 医/伤/生 */
     sbjsYiShangSheng String,
 

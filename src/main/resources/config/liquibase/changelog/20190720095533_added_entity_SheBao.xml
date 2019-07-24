@@ -36,6 +36,10 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="sbjs_gong_shang" type="varchar(255)" remarks="工伤">
+                <constraints nullable="true" />
+            </column>
+
             <column name="grkkxx_yaolang" type="varchar(255)" remarks="个人部分缴纳及扣款明细（元/月）_养老">
                 <constraints nullable="true" />
             </column>

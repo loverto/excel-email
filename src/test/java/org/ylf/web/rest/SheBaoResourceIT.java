@@ -45,6 +45,9 @@ public class SheBaoResourceIT {
     private static final String DEFAULT_SBJS_YANGLAO_SHIYE = "AAAAAAAAAA";
     private static final String UPDATED_SBJS_YANGLAO_SHIYE = "BBBBBBBBBB";
 
+    private static final String DEFAULT_SBJS_GONG_SHANG = "AAAAAAAAAA";
+    private static final String UPDATED_SBJS_GONG_SHANG = "BBBBBBBBBB";
+
     private static final String DEFAULT_SBJS_YI_SHANG_SHENG = "AAAAAAAAAA";
     private static final String UPDATED_SBJS_YI_SHANG_SHENG = "BBBBBBBBBB";
 
@@ -124,6 +127,7 @@ public class SheBaoResourceIT {
             .dept(DEFAULT_DEPT)
             .name(DEFAULT_NAME)
             .sbjsYanglaoShiye(DEFAULT_SBJS_YANGLAO_SHIYE)
+            .sbjsGongShang(DEFAULT_SBJS_GONG_SHANG)
             .sbjsYiShangSheng(DEFAULT_SBJS_YI_SHANG_SHENG)
             .grkkxxYaolang(DEFAULT_GRKKXX_YAOLANG)
             .grkkxxShiye(DEFAULT_GRKKXX_SHIYE)
@@ -149,6 +153,7 @@ public class SheBaoResourceIT {
             .dept(UPDATED_DEPT)
             .name(UPDATED_NAME)
             .sbjsYanglaoShiye(UPDATED_SBJS_YANGLAO_SHIYE)
+            .sbjsGongShang(UPDATED_SBJS_GONG_SHANG)
             .sbjsYiShangSheng(UPDATED_SBJS_YI_SHANG_SHENG)
             .grkkxxYaolang(UPDATED_GRKKXX_YAOLANG)
             .grkkxxShiye(UPDATED_GRKKXX_SHIYE)
@@ -187,6 +192,7 @@ public class SheBaoResourceIT {
         assertThat(testSheBao.getDept()).isEqualTo(DEFAULT_DEPT);
         assertThat(testSheBao.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testSheBao.getSbjsYanglaoShiye()).isEqualTo(DEFAULT_SBJS_YANGLAO_SHIYE);
+        assertThat(testSheBao.getSbjsGongShang()).isEqualTo(DEFAULT_SBJS_GONG_SHANG);
         assertThat(testSheBao.getSbjsYiShangSheng()).isEqualTo(DEFAULT_SBJS_YI_SHANG_SHENG);
         assertThat(testSheBao.getGrkkxxYaolang()).isEqualTo(DEFAULT_GRKKXX_YAOLANG);
         assertThat(testSheBao.getGrkkxxShiye()).isEqualTo(DEFAULT_GRKKXX_SHIYE);
@@ -235,6 +241,7 @@ public class SheBaoResourceIT {
             .andExpect(jsonPath("$.[*].dept").value(hasItem(DEFAULT_DEPT.toString())))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
             .andExpect(jsonPath("$.[*].sbjsYanglaoShiye").value(hasItem(DEFAULT_SBJS_YANGLAO_SHIYE.toString())))
+            .andExpect(jsonPath("$.[*].sbjsGongShang").value(hasItem(DEFAULT_SBJS_GONG_SHANG.toString())))
             .andExpect(jsonPath("$.[*].sbjsYiShangSheng").value(hasItem(DEFAULT_SBJS_YI_SHANG_SHENG.toString())))
             .andExpect(jsonPath("$.[*].grkkxxYaolang").value(hasItem(DEFAULT_GRKKXX_YAOLANG.toString())))
             .andExpect(jsonPath("$.[*].grkkxxShiye").value(hasItem(DEFAULT_GRKKXX_SHIYE.toString())))
@@ -263,6 +270,7 @@ public class SheBaoResourceIT {
             .andExpect(jsonPath("$.dept").value(DEFAULT_DEPT.toString()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
             .andExpect(jsonPath("$.sbjsYanglaoShiye").value(DEFAULT_SBJS_YANGLAO_SHIYE.toString()))
+            .andExpect(jsonPath("$.sbjsGongShang").value(DEFAULT_SBJS_GONG_SHANG.toString()))
             .andExpect(jsonPath("$.sbjsYiShangSheng").value(DEFAULT_SBJS_YI_SHANG_SHENG.toString()))
             .andExpect(jsonPath("$.grkkxxYaolang").value(DEFAULT_GRKKXX_YAOLANG.toString()))
             .andExpect(jsonPath("$.grkkxxShiye").value(DEFAULT_GRKKXX_SHIYE.toString()))
@@ -301,6 +309,7 @@ public class SheBaoResourceIT {
             .dept(UPDATED_DEPT)
             .name(UPDATED_NAME)
             .sbjsYanglaoShiye(UPDATED_SBJS_YANGLAO_SHIYE)
+            .sbjsGongShang(UPDATED_SBJS_GONG_SHANG)
             .sbjsYiShangSheng(UPDATED_SBJS_YI_SHANG_SHENG)
             .grkkxxYaolang(UPDATED_GRKKXX_YAOLANG)
             .grkkxxShiye(UPDATED_GRKKXX_SHIYE)
@@ -326,6 +335,7 @@ public class SheBaoResourceIT {
         assertThat(testSheBao.getDept()).isEqualTo(UPDATED_DEPT);
         assertThat(testSheBao.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testSheBao.getSbjsYanglaoShiye()).isEqualTo(UPDATED_SBJS_YANGLAO_SHIYE);
+        assertThat(testSheBao.getSbjsGongShang()).isEqualTo(UPDATED_SBJS_GONG_SHANG);
         assertThat(testSheBao.getSbjsYiShangSheng()).isEqualTo(UPDATED_SBJS_YI_SHANG_SHENG);
         assertThat(testSheBao.getGrkkxxYaolang()).isEqualTo(UPDATED_GRKKXX_YAOLANG);
         assertThat(testSheBao.getGrkkxxShiye()).isEqualTo(UPDATED_GRKKXX_SHIYE);
