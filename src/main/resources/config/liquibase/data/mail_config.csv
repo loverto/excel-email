@@ -1,2 +1,3 @@
 id;username;password;smtp_server;smtp_port;type_id;mail_type;created_by
 1;yinlongfei@aliyun.com;a920822D;smtp.aliyun.com;465;;;system
+2;gzgl@bksx.cn;bksx1234;mail.bksx.cn;25;;;system
