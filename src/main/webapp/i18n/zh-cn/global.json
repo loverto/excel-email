@@ -16,6 +16,8 @@
         "mailConfig": "Mail Config",
         "sheBao": "She Bao",
         "mailContent": "Mail Content",
+        "gongjijinHistory": "Gongjijin History",
+        "sheBaoHistory": "She Bao History",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

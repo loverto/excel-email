@@ -1,0 +1,37 @@
+{
+  "excelEmailApp": {
+    "gongjijinHistory": {
+      "home": {
+        "title": "Gongjijin Histories",
+        "createLabel": "创建新 Gongjijin History",
+        "createOrEditLabel": "创建或编辑 Gongjijin History",
+        "notFound": "No Gongjijin History found"
+      },
+      "created": "Gongjijin History {{ param }} 创建成功",
+      "updated": "Gongjijin History {{ param }} 更新成功",
+      "deleted": "Gongjijin History {{ param }} 删除成功",
+      "delete": {
+        "question": "你确定要删除 Gongjijin History {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "Gongjijin History"
+      },
+      "xh": "Xh",
+      "dept": "Dept",
+      "name": "Name",
+      "gjjjs": "Gjjjs",
+      "grkkmx": "Grkkmx",
+      "dwkkmx": "Dwkkmx",
+      "total": "Total",
+      "help": {
+        "xh": "序号",
+        "dept": "所属部门",
+        "name": "姓名",
+        "gjjjs": "公积金基数",
+        "grkkmx": "个人部分缴纳及扣款明细（元/月）",
+        "dwkkmx": "单位部分缴纳及扣款明细（元/月）",
+        "total": "合计&#34;"
+      }
+    }
+  }
+}

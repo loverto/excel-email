@@ -23,6 +23,14 @@ import { RouterModule } from '@angular/router';
       {
         path: 'mail-content',
         loadChildren: './mail-content/mail-content.module#ExcelEmailMailContentModule'
+      },
+      {
+        path: 'gongjijin-history',
+        loadChildren: './gongjijin-history/gongjijin-history.module#ExcelEmailGongjijinHistoryModule'
+      },
+      {
+        path: 'she-bao-history',
+        loadChildren: './she-bao-history/she-bao-history.module#ExcelEmailSheBaoHistoryModule'
       }
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ])

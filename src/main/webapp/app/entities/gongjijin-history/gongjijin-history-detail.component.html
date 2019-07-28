@@ -1,0 +1,51 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="gongjijinHistory">
+            <h2><span jhiTranslate="excelEmailApp.gongjijinHistory.detail.title">Gongjijin History</span> {{gongjijinHistory.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="excelEmailApp.gongjijinHistory.xh" [ngbTooltip]="'excelEmailApp.gongjijinHistory.help.xh' | translate">Xh</span></dt>
+                <dd>
+                    <span>{{gongjijinHistory.xh}}</span>
+                </dd>
+                <dt><span jhiTranslate="excelEmailApp.gongjijinHistory.dept" [ngbTooltip]="'excelEmailApp.gongjijinHistory.help.dept' | translate">Dept</span></dt>
+                <dd>
+                    <span>{{gongjijinHistory.dept}}</span>
+                </dd>
+                <dt><span jhiTranslate="excelEmailApp.gongjijinHistory.name" [ngbTooltip]="'excelEmailApp.gongjijinHistory.help.name' | translate">Name</span></dt>
+                <dd>
+                    <span>{{gongjijinHistory.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="excelEmailApp.gongjijinHistory.gjjjs" [ngbTooltip]="'excelEmailApp.gongjijinHistory.help.gjjjs' | translate">Gjjjs</span></dt>
+                <dd>
+                    <span>{{gongjijinHistory.gjjjs}}</span>
+                </dd>
+                <dt><span jhiTranslate="excelEmailApp.gongjijinHistory.grkkmx" [ngbTooltip]="'excelEmailApp.gongjijinHistory.help.grkkmx' | translate">Grkkmx</span></dt>
+                <dd>
+                    <span>{{gongjijinHistory.grkkmx}}</span>
+                </dd>
+                <dt><span jhiTranslate="excelEmailApp.gongjijinHistory.dwkkmx" [ngbTooltip]="'excelEmailApp.gongjijinHistory.help.dwkkmx' | translate">Dwkkmx</span></dt>
+                <dd>
+                    <span>{{gongjijinHistory.dwkkmx}}</span>
+                </dd>
+                <dt><span jhiTranslate="excelEmailApp.gongjijinHistory.total" [ngbTooltip]="'excelEmailApp.gongjijinHistory.help.total' | translate">Total</span></dt>
+                <dd>
+                    <span>{{gongjijinHistory.total}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/gongjijin-history', gongjijinHistory.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,5 +1,5 @@
 {
-    "name": "SheBao",
+    "name": "SheBaoHistory",
     "fields": [
         {
             "fieldName": "xh",
@@ -83,9 +83,9 @@
         }
     ],
     "relationships": [],
-    "changelogDate": "20190728134921",
-    "javadoc": "The SheBao entity.\n@author ylf",
-    "entityTableName": "she_bao",
+    "changelogDate": "20190728134920",
+    "javadoc": "The SheBaoHistory entity.\n@author ylf",
+    "entityTableName": "she_bao_history",
     "dto": "no",
     "pagination": "pagination",
     "service": "no",

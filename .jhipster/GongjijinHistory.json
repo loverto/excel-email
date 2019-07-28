@@ -1,5 +1,5 @@
 {
-    "name": "Gongjijin",
+    "name": "GongjijinHistory",
     "fields": [
         {
             "fieldName": "xh",
@@ -38,9 +38,9 @@
         }
     ],
     "relationships": [],
-    "changelogDate": "20190728134916",
-    "javadoc": "The Gongjijin entity.\n@author ylf",
-    "entityTableName": "gongjijin",
+    "changelogDate": "20190728134917",
+    "javadoc": "The GongjijinHistory entity.\n@author ylf",
+    "entityTableName": "gongjijin_history",
     "dto": "no",
     "pagination": "pagination",
     "service": "no",
