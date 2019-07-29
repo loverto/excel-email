@@ -113,11 +113,12 @@ public class MailUtilService{
 
             if(first.isPresent()){
                 UserInfo mailBean = first.get();
-                log.info("给 {} 发送邮件", mailBean.getName());
+                String name1 = mailBean.getName();
+                log.info("给 {} 发送邮件", name1);
                 s[0] = mailBean.getInternetMail();
-                content = content.replace("{ username }",username);
+                String replaceContent = content.replace("{ username }",name1);
                 //发送邮件
-                sendAttachmentFileEmail(mailSender,deliver, s, s, subject, content, isHtml, name, file);
+                sendAttachmentFileEmail(mailSender,deliver, s, s, subject, replaceContent, isHtml, name, file);
                 Thread.sleep(sleep*1000);
             };
 
@@ -143,7 +144,7 @@ public class MailUtilService{
     @Async
     public void sendAttachmentFileEmail(JavaMailSender mailSender, String deliver, String[] receiver, String[] carbonCopy, String subject, String content, boolean isHtml, String fileName, File file) {
         long startTimestamp = System.currentTimeMillis();
-        log.info("Start send mail ...");
+        log.info("Start send mail ... deliver: {}, receiver: {}, carbonCopy: {}, subject: {},content: {},isHtml:{}, fileName:{},",deliver,receiver,carbonCopy,subject,content,isHtml,fileName);
 
         try {
             MimeMessage message = mailSender.createMimeMessage();
@@ -163,6 +164,8 @@ public class MailUtilService{
             log.error("Send mail failed, error message is {}\n", e.getMessage());
             e.printStackTrace();
             //throw new ServiceException(e.getMessage());
+        }finally {
+            file.delete();
         }
     }
 
@@ -205,17 +208,18 @@ public class MailUtilService{
                 Map<String, String> stringObjectMap = objectToMap(value);
                 a.add(stringObjectMap);
                 map.put("sb", a);
-                Optional<Gongjijin> value1 = Gongjijins.parallelStream().filter((Gongjijin g) -> value.getName().equals(g.getName())).findFirst();
+                Optional<Gongjijin> value1 = Gongjijins.stream().filter((Gongjijin g) -> value.getName().equals(g.getName())).findFirst();
                 List<Map<String, String>> b = new ArrayList();
-
-                Gongjijin gongjijin = value1.get();
-                GongjijinHistory gongjijinHistory = new GongjijinHistory();
-                BeanUtils.copyProperties(gongjijin, gongjijinHistory);
-                gongjijinRepository.delete(gongjijin);
-                gongjijinHistoryRepository.save(gongjijinHistory);
-                Map<String, String> stringObjectMap1 = objectToMap(gongjijin);
-                b.add(stringObjectMap1);
-                map.put("gjj", b);
+                if(value1.isPresent()) {
+                    Gongjijin gongjijin = value1.get();
+                    GongjijinHistory gongjijinHistory = new GongjijinHistory();
+                    BeanUtils.copyProperties(gongjijin, gongjijinHistory);
+                    gongjijinRepository.delete(gongjijin);
+                    gongjijinHistoryRepository.save(gongjijinHistory);
+                    Map<String, String> stringObjectMap1 = objectToMap(gongjijin);
+                    b.add(stringObjectMap1);
+                    map.put("gjj", b);
+                }
 
                 String name = value.getName();
                 templateExportParams.setSheetName(name);
@@ -228,7 +232,9 @@ public class MailUtilService{
                 String name1 = outDataPath + File.separator + name + ".xlsx";
                 File file = new File(name1);
                 if (file.exists()){
-                    file.renameTo(new File(file.getAbsolutePath()+file.getName()+file.lastModified()));
+                    File dest = new File(file.getAbsolutePath() + file.getName() + file.lastModified());
+                    file.renameTo(dest);
+                    dest.delete();
                 }
                 FileOutputStream fos = new FileOutputStream(name1);
                 workbook.write(fos);
