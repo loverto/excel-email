@@ -205,7 +205,7 @@ public class MailUtilService{
                 if (!savefile.exists()) {
                     savefile.mkdirs();
                 }
-                String name1 = outDataPath + name + ".xlsx";
+                String name1 = outDataPath + File.separator + name + ".xlsx";
                 File file = new File(name1);
                 if (file.exists()){
                     file.renameTo(new File(file.getAbsolutePath()+file.getName()+file.lastModified()));
