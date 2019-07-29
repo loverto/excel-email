@@ -1,0 +1,95 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="excelEmailApp.sheBaoHistory.home.title">She Bao Histories</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-she-bao-history" [routerLink]="['/she-bao-history/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="excelEmailApp.sheBaoHistory.home.createLabel">
+            Create new She Bao History
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="sheBaoHistories?.length === 0">
+        <span jhiTranslate="excelEmailApp.sheBaoHistory.home.notFound">No sheBaoHistories found</span>
+    </div>
+    <div class="table-responsive" *ngIf="sheBaoHistories?.length > 0">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="xh"><span jhiTranslate="excelEmailApp.sheBaoHistory.xh">Xh</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="dept"><span jhiTranslate="excelEmailApp.sheBaoHistory.dept">Dept</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="name"><span jhiTranslate="excelEmailApp.sheBaoHistory.name">Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="sbjsYanglaoShiye"><span jhiTranslate="excelEmailApp.sheBaoHistory.sbjsYanglaoShiye">Sbjs Yanglao Shiye</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="sbjsGongShang"><span jhiTranslate="excelEmailApp.sheBaoHistory.sbjsGongShang">Sbjs Gong Shang</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="sbjsYiShangSheng"><span jhiTranslate="excelEmailApp.sheBaoHistory.sbjsYiShangSheng">Sbjs Yi Shang Sheng</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="grkkxxYaolang"><span jhiTranslate="excelEmailApp.sheBaoHistory.grkkxxYaolang">Grkkxx Yaolang</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="grkkxxShiye"><span jhiTranslate="excelEmailApp.sheBaoHistory.grkkxxShiye">Grkkxx Shiye</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="grkkxxYiliao"><span jhiTranslate="excelEmailApp.sheBaoHistory.grkkxxYiliao">Grkkxx Yiliao</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="grkkxxTotal"><span jhiTranslate="excelEmailApp.sheBaoHistory.grkkxxTotal">Grkkxx Total</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="dwbfYaolao"><span jhiTranslate="excelEmailApp.sheBaoHistory.dwbfYaolao">Dwbf Yaolao</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="dwbfShiye"><span jhiTranslate="excelEmailApp.sheBaoHistory.dwbfShiye">Dwbf Shiye</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="dwbfYiliao"><span jhiTranslate="excelEmailApp.sheBaoHistory.dwbfYiliao">Dwbf Yiliao</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="dwbfGongshang"><span jhiTranslate="excelEmailApp.sheBaoHistory.dwbfGongshang">Dwbf Gongshang</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="dwbfShengyu"><span jhiTranslate="excelEmailApp.sheBaoHistory.dwbfShengyu">Dwbf Shengyu</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="dwbfTotal"><span jhiTranslate="excelEmailApp.sheBaoHistory.dwbfTotal">Dwbf Total</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let sheBaoHistory of sheBaoHistories ;trackBy: trackId">
+                <td><a [routerLink]="['/she-bao-history', sheBaoHistory.id, 'view' ]">{{sheBaoHistory.id}}</a></td>
+                <td>{{sheBaoHistory.xh}}</td>
+                <td>{{sheBaoHistory.dept}}</td>
+                <td>{{sheBaoHistory.name}}</td>
+                <td>{{sheBaoHistory.sbjsYanglaoShiye}}</td>
+                <td>{{sheBaoHistory.sbjsGongShang}}</td>
+                <td>{{sheBaoHistory.sbjsYiShangSheng}}</td>
+                <td>{{sheBaoHistory.grkkxxYaolang}}</td>
+                <td>{{sheBaoHistory.grkkxxShiye}}</td>
+                <td>{{sheBaoHistory.grkkxxYiliao}}</td>
+                <td>{{sheBaoHistory.grkkxxTotal}}</td>
+                <td>{{sheBaoHistory.dwbfYaolao}}</td>
+                <td>{{sheBaoHistory.dwbfShiye}}</td>
+                <td>{{sheBaoHistory.dwbfYiliao}}</td>
+                <td>{{sheBaoHistory.dwbfGongshang}}</td>
+                <td>{{sheBaoHistory.dwbfShengyu}}</td>
+                <td>{{sheBaoHistory.dwbfTotal}}</td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/she-bao-history', sheBaoHistory.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/she-bao-history', sheBaoHistory.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'she-bao-history', { outlets: { popup: sheBaoHistory.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div [hidden]="sheBaoHistories?.length === 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

@@ -33,7 +33,7 @@
         }
     ],
     "relationships": [],
-    "changelogDate": "20190724115528",
+    "changelogDate": "20190728134919",
     "javadoc": "The MailConfig entity.\n@author ylf",
     "entityTableName": "mail_config",
     "dto": "no",

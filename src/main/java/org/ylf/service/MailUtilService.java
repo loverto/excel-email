@@ -22,14 +22,19 @@ import org.apache.commons.collections4.ListUtils;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.ylf.domain.Gongjijin;
+import org.ylf.domain.GongjijinHistory;
 import org.ylf.domain.SheBao;
+import org.ylf.domain.SheBaoHistory;
 import org.ylf.domain.UserInfo;
+import org.ylf.repository.GongjijinHistoryRepository;
 import org.ylf.repository.GongjijinRepository;
+import org.ylf.repository.SheBaoHistoryRepository;
 import org.ylf.repository.SheBaoRepository;
 import org.ylf.repository.UserInfoRepository;
 
@@ -42,15 +47,21 @@ public class MailUtilService{
 
     private final SheBaoRepository sheBaoRepository;
 
+    private final GongjijinHistoryRepository gongjijinHistoryRepository;
+
+    private final SheBaoHistoryRepository sheBaoHistoryRepository;
+
     private final UserInfoRepository userInfoRepository;
     private final JavaMailSender mailSender;
 
     public MailUtilService(GongjijinRepository gongjijinRepository, SheBaoRepository sheBaoRepository,
-                           UserInfoRepository userInfoRepository,JavaMailSender mailSender){
+                           UserInfoRepository userInfoRepository,JavaMailSender mailSender,GongjijinHistoryRepository gongjijinHistoryRepository,SheBaoHistoryRepository sheBaoHistoryRepository){
         this.gongjijinRepository = gongjijinRepository;
         this.sheBaoRepository = sheBaoRepository;
         this.userInfoRepository = userInfoRepository;
         this.mailSender = mailSender;
+        this.gongjijinHistoryRepository = gongjijinHistoryRepository;
+        this.sheBaoHistoryRepository = sheBaoHistoryRepository;
     }
 
 
@@ -185,15 +196,24 @@ public class MailUtilService{
             int s = (sbSize>size)?size:sbSize;
             for (int i = 0; i< s; i++){
                 SheBao value = SheBaos.get(i);
+                SheBaoHistory sheBaoHistory = new SheBaoHistory();
+                BeanUtils.copyProperties(value, sheBaoHistory);
+                sheBaoRepository.delete(value);
+                sheBaoHistoryRepository.save(sheBaoHistory);
                 List<Map<String,String>> a = new ArrayList();
-
 
                 Map<String, String> stringObjectMap = objectToMap(value);
                 a.add(stringObjectMap);
                 map.put("sb", a);
-                Gongjijin value1 = Gongjijins.get(i);
+                Optional<Gongjijin> value1 = Gongjijins.parallelStream().filter((Gongjijin g) -> value.getName().equals(g.getName())).findFirst();
                 List<Map<String, String>> b = new ArrayList();
-                Map<String, String> stringObjectMap1 = objectToMap(value1);
+
+                Gongjijin gongjijin = value1.get();
+                GongjijinHistory gongjijinHistory = new GongjijinHistory();
+                BeanUtils.copyProperties(gongjijin, gongjijinHistory);
+                gongjijinRepository.delete(gongjijin);
+                gongjijinHistoryRepository.save(gongjijinHistory);
+                Map<String, String> stringObjectMap1 = objectToMap(gongjijin);
                 b.add(stringObjectMap1);
                 map.put("gjj", b);
 

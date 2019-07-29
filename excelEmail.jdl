@@ -26,6 +26,34 @@ entity Gongjijin {
 }
 
 /**
+ * The GongjijinHistory entity.
+ * @author ylf
+ */
+entity GongjijinHistory {
+    /**序号*/
+      xh String,
+
+    /**所属部门*/
+      dept String,
+
+    /**姓名*/
+      name String,
+
+    /**公积金基数*/
+      gjjjs String,
+
+    /**个人部分缴纳及扣款明细（元/月）*/
+      grkkmx String,
+
+    /**单位部分缴纳及扣款明细（元/月）*/
+      dwkkmx String,
+
+    /**合计"*/
+      total String
+}
+
+
+/**
  * The UserInfo entity.
  * @author ylf
  */
@@ -63,6 +91,66 @@ entity MailConfig {
     typeId String ,
     /** 邮件类型 */
     mailType String 
+}
+
+
+/**
+ * The SheBaoHistory entity.
+ * @author ylf
+ */
+entity SheBaoHistory {
+    /** 北控三兴员工社会保险基数确认单_序号 */
+    xh Integer,
+
+    /** 所属部门 */
+    dept String,
+
+
+    /** 姓名 */
+    name String,
+
+
+    /** 社保基数_养/失 */
+    sbjsYanglaoShiye String,
+
+    /** 工伤 */
+    sbjsGongShang String,
+    /** 医/伤/生 */
+    sbjsYiShangSheng String,
+
+    /** 个人部分缴纳及扣款明细（元/月）_养老 */
+    grkkxxYaolang String,
+
+    /** 失业 */
+    grkkxxShiye String,
+
+    /** 医疗 */
+    grkkxxYiliao String,
+
+    /** 个人合计 */
+    grkkxxTotal String,
+
+
+    /** 单位部分缴纳及扣款明细（元/月）_养老 */
+    dwbfYaolao String,
+
+    /** 失业 */
+    dwbfShiye String,
+
+    /** 医疗 */
+    dwbfYiliao String,
+
+
+    /** 工伤 */
+    dwbfGongshang String,
+
+
+    /** 生育 */
+    dwbfShengyu String,
+
+
+    /** 单位合计 */
+    dwbfTotal String
 }
 
 /**

@@ -1,0 +1,87 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="sheBaoHistory">
+            <h2><span jhiTranslate="excelEmailApp.sheBaoHistory.detail.title">She Bao History</span> {{sheBaoHistory.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="excelEmailApp.sheBaoHistory.xh" [ngbTooltip]="'excelEmailApp.sheBaoHistory.help.xh' | translate">Xh</span></dt>
+                <dd>
+                    <span>{{sheBaoHistory.xh}}</span>
+                </dd>
+                <dt><span jhiTranslate="excelEmailApp.sheBaoHistory.dept" [ngbTooltip]="'excelEmailApp.sheBaoHistory.help.dept' | translate">Dept</span></dt>
+                <dd>
+                    <span>{{sheBaoHistory.dept}}</span>
+                </dd>
+                <dt><span jhiTranslate="excelEmailApp.sheBaoHistory.name" [ngbTooltip]="'excelEmailApp.sheBaoHistory.help.name' | translate">Name</span></dt>
+                <dd>
+                    <span>{{sheBaoHistory.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="excelEmailApp.sheBaoHistory.sbjsYanglaoShiye" [ngbTooltip]="'excelEmailApp.sheBaoHistory.help.sbjsYanglaoShiye' | translate">Sbjs Yanglao Shiye</span></dt>
+                <dd>
+                    <span>{{sheBaoHistory.sbjsYanglaoShiye}}</span>
+                </dd>
+                <dt><span jhiTranslate="excelEmailApp.sheBaoHistory.sbjsGongShang" [ngbTooltip]="'excelEmailApp.sheBaoHistory.help.sbjsGongShang' | translate">Sbjs Gong Shang</span></dt>
+                <dd>
+                    <span>{{sheBaoHistory.sbjsGongShang}}</span>
+                </dd>
+                <dt><span jhiTranslate="excelEmailApp.sheBaoHistory.sbjsYiShangSheng" [ngbTooltip]="'excelEmailApp.sheBaoHistory.help.sbjsYiShangSheng' | translate">Sbjs Yi Shang Sheng</span></dt>
+                <dd>
+                    <span>{{sheBaoHistory.sbjsYiShangSheng}}</span>
+                </dd>
+                <dt><span jhiTranslate="excelEmailApp.sheBaoHistory.grkkxxYaolang" [ngbTooltip]="'excelEmailApp.sheBaoHistory.help.grkkxxYaolang' | translate">Grkkxx Yaolang</span></dt>
+                <dd>
+                    <span>{{sheBaoHistory.grkkxxYaolang}}</span>
+                </dd>
+                <dt><span jhiTranslate="excelEmailApp.sheBaoHistory.grkkxxShiye" [ngbTooltip]="'excelEmailApp.sheBaoHistory.help.grkkxxShiye' | translate">Grkkxx Shiye</span></dt>
+                <dd>
+                    <span>{{sheBaoHistory.grkkxxShiye}}</span>
+                </dd>
+                <dt><span jhiTranslate="excelEmailApp.sheBaoHistory.grkkxxYiliao" [ngbTooltip]="'excelEmailApp.sheBaoHistory.help.grkkxxYiliao' | translate">Grkkxx Yiliao</span></dt>
+                <dd>
+                    <span>{{sheBaoHistory.grkkxxYiliao}}</span>
+                </dd>
+                <dt><span jhiTranslate="excelEmailApp.sheBaoHistory.grkkxxTotal" [ngbTooltip]="'excelEmailApp.sheBaoHistory.help.grkkxxTotal' | translate">Grkkxx Total</span></dt>
+                <dd>
+                    <span>{{sheBaoHistory.grkkxxTotal}}</span>
+                </dd>
+                <dt><span jhiTranslate="excelEmailApp.sheBaoHistory.dwbfYaolao" [ngbTooltip]="'excelEmailApp.sheBaoHistory.help.dwbfYaolao' | translate">Dwbf Yaolao</span></dt>
+                <dd>
+                    <span>{{sheBaoHistory.dwbfYaolao}}</span>
+                </dd>
+                <dt><span jhiTranslate="excelEmailApp.sheBaoHistory.dwbfShiye" [ngbTooltip]="'excelEmailApp.sheBaoHistory.help.dwbfShiye' | translate">Dwbf Shiye</span></dt>
+                <dd>
+                    <span>{{sheBaoHistory.dwbfShiye}}</span>
+                </dd>
+                <dt><span jhiTranslate="excelEmailApp.sheBaoHistory.dwbfYiliao" [ngbTooltip]="'excelEmailApp.sheBaoHistory.help.dwbfYiliao' | translate">Dwbf Yiliao</span></dt>
+                <dd>
+                    <span>{{sheBaoHistory.dwbfYiliao}}</span>
+                </dd>
+                <dt><span jhiTranslate="excelEmailApp.sheBaoHistory.dwbfGongshang" [ngbTooltip]="'excelEmailApp.sheBaoHistory.help.dwbfGongshang' | translate">Dwbf Gongshang</span></dt>
+                <dd>
+                    <span>{{sheBaoHistory.dwbfGongshang}}</span>
+                </dd>
+                <dt><span jhiTranslate="excelEmailApp.sheBaoHistory.dwbfShengyu" [ngbTooltip]="'excelEmailApp.sheBaoHistory.help.dwbfShengyu' | translate">Dwbf Shengyu</span></dt>
+                <dd>
+                    <span>{{sheBaoHistory.dwbfShengyu}}</span>
+                </dd>
+                <dt><span jhiTranslate="excelEmailApp.sheBaoHistory.dwbfTotal" [ngbTooltip]="'excelEmailApp.sheBaoHistory.help.dwbfTotal' | translate">Dwbf Total</span></dt>
+                <dd>
+                    <span>{{sheBaoHistory.dwbfTotal}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/she-bao-history', sheBaoHistory.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
